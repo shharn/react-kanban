@@ -1,12 +1,13 @@
 import { combineReducers } from 'redux';
 import * as cardActionType from '../types/cardActionType';
+import * as laneActionType from '../types/laneActionType';
 import api from '../data/api';
-
 
 const cards = (state = api.getAllCards(), action) => {
     switch (action.type) {
         case cardActionType.ADD_CARD:
-            return state;
+            api.addCard(action.title, action.laneId);
+            return Object.assign([], api.getAllCards());
         case cardActionType.GET_ALL_CARDS:
             return state;
         default:
@@ -15,17 +16,27 @@ const cards = (state = api.getAllCards(), action) => {
 }
 
 const lanes = (state = api.getAllLanes(), action) => {
+    let { targetLaneId, inputContent, isEditing }  = action;
     switch(action.type) {
-        case laneActionType.TOGGLE_ADDCARD:
-            return [
-                ...state,
-                { state[action.targetLaneId].isEditing: !state[action.targetLaneId].isEditing }
-            ];
+        case laneActionType.TOGGLE_EDITABLE_CARD:
+            return Object.assign({}, state, {
+                [targetLaneId] : {
+                    isEditing: action.isEditing,
+                    inputContent: ""
+                }
+            });
+        case laneActionType.INPUT_CONTENT_CHANGED:
+            return Object.assign({}, state, {
+                [targetLaneId]: {
+                    inputContent: inputContent,
+                    isEditing: true
+                }
+            });
         default:
             return state;
     }
 }
 
-const rootReducer = combineReducers({ cards });
+const kanbanReducer = combineReducers({ cards, lanes });
 
-export default rootReducer;
+export default kanbanReducer;

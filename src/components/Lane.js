@@ -6,6 +6,13 @@ import AddCard from '../containers/AddCard';
 export default class Lane extends Component {
     constructor(props) {
         super(props);
+        this.handleClickOnEmptySpace = this.handleClickOnEmptySpace.bind(this);
+    }
+
+    handleClickOnEmptySpace(event) {
+        if (this.props.isEditing && event.target.className === "lane") {
+            this.props.toggleAddCard(this.props.id, this.props.isEditing);
+        }
     }
 
     render() {
@@ -16,8 +23,8 @@ export default class Lane extends Component {
             }
         });
         return (
-            <li className="lane" id={this.props.id}>
-                <h2>{this.props.title}</h2>
+            <li className="lane" id={this.props.id} onClick={this.handleClickOnEmptySpace}>
+                <div className="title">{this.props.title}</div>
                 {cards}
                 <AddCard laneId={laneId} />
             </li>

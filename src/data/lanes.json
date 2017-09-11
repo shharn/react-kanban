@@ -1,14 +1,18 @@
 {
     "todo": {
-        "isEditing": false 
+        "isEditing": false,
+        "inputContent": ""
     },
     "inprogress": {
-        "isEditing": false
+        "isEditing": false,
+        "inputContent": ""
     },
     "pendding": {
-        "isEditing": false
+        "isEditing": false,
+        "inputContent": ""
     },
     "done": {
-        "isEditing": false
+        "isEditing": false,
+        "inputContent": ""
     }
 }
