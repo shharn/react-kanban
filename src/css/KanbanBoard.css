@@ -1,0 +1,5 @@
+.kanbanBoard {
+    overflow: scroll;
+    white-space: nowrap;
+    height: 100%;
+}

@@ -1,0 +1,20 @@
+li.lane {
+    list-style-type: none;
+    width: 300px;
+    display: inline-block;
+    text-align: center;
+    vertical-align: middle;
+    position: relative;
+    height: 100%;
+    padding: 10px 0;
+}
+
+li.lane:after {
+    content: "";
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 1px;
+    height: 99%;
+    background: linear-gradient(to bottom, #eee 0%, #ccc 50%, #eee 100%) fixed;
+}

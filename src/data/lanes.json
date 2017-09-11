@@ -1,0 +1,14 @@
+{
+    "todo": {
+        "isEditing": false 
+    },
+    "inprogress": {
+        "isEditing": false
+    },
+    "pendding": {
+        "isEditing": false
+    },
+    "done": {
+        "isEditing": false
+    }
+}
