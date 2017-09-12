@@ -10,6 +10,10 @@ const cards = (state = api.getAllCards(), action) => {
             return Object.assign([], api.getAllCards());
         case cardActionType.GET_ALL_CARDS:
             return state;
+        case cardActionType.TOGGLE_CARD_EDIT_MODE:
+            let newState = [...state];
+            newState[action.cardId].isEditing = action.isEditing;
+            return newState;
         default:
             return state;
     }

@@ -3,5 +3,7 @@
     white-space: nowrap;
     border-radius: 5px;
     margin: 5px;
+    vertical-align: middle;
     height: 100%;
+    background-color: #ccc;
 }

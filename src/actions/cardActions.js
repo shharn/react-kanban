@@ -14,3 +14,11 @@ export const getAllCards = () => {
         type: cardAction.GET_ALL_CARDS
     };
 };
+
+export const toggleEditMode = (cardId, isEditing) => {
+    return {
+        type: cardAction.TOGGLE_CARD_EDIT_MODE,
+        cardId: cardId,
+        isEditing: !isEditing
+    }
+}
