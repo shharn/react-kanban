@@ -50,6 +50,8 @@ const kanbanboard = (state = api.getKanbanboardStates(), action) => {
             return Object.assign({}, state, {
                 isEditMode: !isEditMode
             });
+        default:
+            return state;
     }
 }
 

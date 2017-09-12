@@ -12,5 +12,5 @@ export default {
         laneId: laneId
     }),
     getAllLanes: () => ( lanes ),
-    getKanbanboardStates: () => (kanbanboard)
+    getKanbanboardStates: () => ( kanbanboard )
 };
