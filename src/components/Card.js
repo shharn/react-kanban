@@ -14,13 +14,10 @@ export default class Card extends Component {
     }
 
     render() {
-        let { isEditing } = this.props.card;
-        let modalContent = isEditing ? 
-            <EditCardModal /> : "";
         return (
             <div id={this.props.card.id} className="card" onClick={this.handleClick}>
                 {this.props.card.title}
-                {modalContent}     
+                {this.props.card.isEditing ? <EditCardModal /> : ""}
             </div>
         )
     }

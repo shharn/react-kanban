@@ -1,5 +1,6 @@
 .editCardModal {
   position: fixed;
-  margin: auto;
   z-index: 100;
+  top: 48%;
+  left: 48%;
 }

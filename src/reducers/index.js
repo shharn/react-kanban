@@ -1,6 +1,7 @@
 import { combineReducers } from 'redux';
 import * as cardActionType from '../types/cardActionType';
 import * as laneActionType from '../types/laneActionType';
+import * as kanbanboardActionType from '../types/kanbanboardActionType';
 import api from '../data/api';
 
 const cards = (state = api.getAllCards(), action) => {
@@ -11,8 +12,9 @@ const cards = (state = api.getAllCards(), action) => {
         case cardActionType.GET_ALL_CARDS:
             return state;
         case cardActionType.TOGGLE_CARD_EDIT_MODE:
-            let newState = [...state];
-            newState[action.cardId].isEditing = action.isEditing;
+            var newState = [...state];
+            var updatedCard = newState.find(card => card.id === action.cardId);
+            updatedCard.isEditing = action.isEditing;
             return newState;
         default:
             return state;
@@ -41,6 +43,16 @@ const lanes = (state = api.getAllLanes(), action) => {
     }
 }
 
-const kanbanReducer = combineReducers({ cards, lanes });
+const kanbanboard = (state = api.getKanbanboardStates(), action) => {
+    let { isEditMode } = state;
+    switch(action.type) {
+        case kanbanboardActionType.TOGGLE_CARD_EDIT_MODE:
+            return Object.assign({}, state, {
+                isEditMode: !isEditMode
+            });
+    }
+}
+
+const kanbanReducer = combineReducers({ cards, lanes, kanbanboard });
 
 export default kanbanReducer;

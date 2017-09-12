@@ -1,5 +1,6 @@
 import cards from './cards.json';
 import lanes from './lanes.json';
+import kanbanboard from './kanbanboard.json';
 
 let nextCardId = 5;
 
@@ -10,5 +11,6 @@ export default {
         title: title,
         laneId: laneId
     }),
-    getAllLanes: () => ( lanes )
+    getAllLanes: () => ( lanes ),
+    getKanbanboardStates: () => (kanbanboard)
 };
