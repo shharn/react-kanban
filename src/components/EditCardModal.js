@@ -32,7 +32,6 @@ class EditCardModal extends Component {
     return (
       <div className={containerClassName} onClick={this.handleClick}>
         <div className="modal">
-          {card.id}
           <input type="text" className="modal-item" value={cardTitle} onChange={this.handleInputChange} onClick={this.handleInputKeyUp} />
           <button className="modal-item-button" type="button" onClick={this.saveButtonClicked}>Save</button>
         </div>
