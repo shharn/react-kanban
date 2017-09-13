@@ -2,25 +2,21 @@
     {
         "id": 1,
         "title": "Test Card1",
-        "laneId": "todo",
-        "isEditing": false
+        "laneId": "todo"
     },
     {
         "id": 2,
         "title": "Test Card2",
-        "laneId": "inprogress",
-        "isEditing": false
+        "laneId": "inprogress"
     },
     {
         "id": 3,
         "title": "Test Card3",
-        "laneId": "pendding",
-        "isEditing": false
+        "laneId": "pendding"
     },
     {
         "id": 4,
         "title": "Test Card4",
-        "laneId": "done",
-        "isEditing": false
+        "laneId": "done"
     }
 ]

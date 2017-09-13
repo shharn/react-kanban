@@ -1,24 +1,23 @@
-import * as cardAction from '../types/cardActionType';
+import * as cardActionType from '../types/cardActionType';
 import api from '../data/api';
 
 export const addCard = (laneId, title) => {
     return {
-        type:cardAction.ADD_CARD,
+        type:cardActionType.ADD_CARD,
         laneId: laneId,
         title: title
     };
 };
 
-export const getAllCards = () => {
+export const editCard = (card) => {
     return {
-        type: cardAction.GET_ALL_CARDS
-    };
-};
-
-export const toggleEditMode = (cardId, isEditing) => {
-    return {
-        type: cardAction.TOGGLE_CARD_EDIT_MODE,
-        cardId: cardId,
-        isEditing: !isEditing
+        type: cardActionType.EDIT_CARD,
+        card: card
     }
 }
+
+export const getAllCards = () => {
+    return {
+        type: cardActionType.GET_ALL_CARDS
+    };
+};

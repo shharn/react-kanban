@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import '../css/Lane.css';
 import Card from '../containers/CardContainer';
 import AddCard from '../containers/AddCard';
-import EditCardModal from './EditCardModal';
 
 export default class Lane extends Component {
     constructor(props) {

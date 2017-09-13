@@ -11,11 +11,11 @@ const cards = (state = api.getAllCards(), action) => {
             return Object.assign([], api.getAllCards());
         case cardActionType.GET_ALL_CARDS:
             return state;
-        case cardActionType.TOGGLE_CARD_EDIT_MODE:
-            var newState = [...state];
-            var updatedCard = newState.find(card => card.id === action.cardId);
-            updatedCard.isEditing = action.isEditing;
-            return newState;
+        case cardActionType.EDIT_CARD:
+            let clone = [...state];
+            let updatedCard = clone.find(card => card.id === action.card.id);
+            updatedCard.title = action.card.title;
+            return clone;
         default:
             return state;
     }
@@ -48,7 +48,14 @@ const kanbanboard = (state = api.getKanbanboardStates(), action) => {
     switch(action.type) {
         case kanbanboardActionType.TOGGLE_CARD_EDIT_MODE:
             return Object.assign({}, state, {
-                isEditMode: !isEditMode
+                isEditMode: !isEditMode,
+                card: action.card
+            });
+        case kanbanboardActionType.REFLECT_INPUT_CHANGE:
+            return Object.assign({}, state, {
+                card : {
+                    title: action.text
+                }
             });
         default:
             return state;

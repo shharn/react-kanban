@@ -10,7 +10,7 @@ const mapStateToProps = (state, ownProps) => {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    toggleEditMode: (cardId, isEditing) => dispatch(toggleCardEditMode(cardId, isEditing))
+    toggleEditMode: (card) => dispatch(toggleCardEditMode(card))
   }
 };
 
