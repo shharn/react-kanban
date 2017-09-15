@@ -58,27 +58,42 @@ class EditCardModal extends Component {
   // }
 
   handleTitleInputKeyUp(keyEvent) {
-    
+    if (keyEvent.which === keycode.codes['esc']) {
+      this.props.toggleTitleEditMode();
+    } else if (keyEvent.which === keycode.codes['enter']) {
+      let card = this.editModeContet.card;
+      this.props.updateTitle(card.id, card.title);
+    }
   }
 
   handleTitleInputChange(changeEvent) {
-
+    this.props.reflectTitleInputChange(changeEvent.target.value);
   }
 
   handleDescriptionInputKeyUp(keyEvent) {
-    
+    if (keyEvent.which === keycode.codes['esc']) {
+      this.props.toggleDescriptionEditMode();
+    } else if (keyEvent.which === keycode.codes['enter']) {
+      let card = this.props.editModeContent.card;
+      this.props.updateDescription(card.id, card.description);
+    }
   }
 
-  handleDescriptionInputChange(changeEvnet) {
-
+  handleDescriptionInputChange(changeEvent) {
+    this.props.reflectDescriptionInputChange(changeEvent.target.value);
   }
 
   handleDueDateInputKeyUp(keyEvent) {
-
+    if (keyEvent.which === keycode.codes['esc']) {
+      this.props.toggleDueDateEditMode();
+    } else if (keyEvent.which === keycode.codes['enter']) {
+      let card = this.props.editModeContent.card;
+      this.props.updateDueDate(card.id, card.dueDate);
+    }
   }
   
   handleDueDateInputChange(changeEvent) {
-
+    this.props.reflectDueDateInputChange(changeEvent.target.value);
   }
 
   render() {

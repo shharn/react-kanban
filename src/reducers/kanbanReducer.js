@@ -46,7 +46,7 @@ const kanbanboard = (state = api.getKanbanboardStates(), action) => {
       case kanbanboardActionType.REFLECT_TITLE_INPUT_CHANGE:
           return {
               ...state,
-              editModeContet: {
+              editModeContent: {
                   ...state.editModeContent,
                   card: {
                       ...state.editModeContent.card,
