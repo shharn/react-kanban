@@ -17,14 +17,14 @@ class EditCardModal extends Component {
     }
   }
 
-  handleInputChange(event) {
-    this.props.handleInputChange(event.target.value);
-  }
+  // handleInputChange(event) {
+  //   this.props.handleInputChange(event.target.value);
+  // }
 
-  saveButtonClicked() {
-    this.props.saveCard(this.props.card);
-    this.props.toggleCardEditMode(null);
-  }
+  // saveButtonClicked() {
+  //   this.props.saveCard(this.props.card);
+  //   this.props.toggleCardEditMode(null);
+  // }
 
   handleInputKeyUp(keyEvent) {
     if (keyEvent.which === keycode.codes["esc"]) {
@@ -35,22 +35,45 @@ class EditCardModal extends Component {
     }
   }
 
+  handleTitleInputKeyUp(keyEvent) {
+
+  }
+
+  handleTitleInputChange(changeEvent) {
+
+  }
+
+  handleTitleDivClick(clickEvent) {
+
+  }
+
+  handleDescriptionInputKeyUp(keyEvent) {
+    
+  }
+
   render() {
-    let { isEditMode } = this.props;
-    let { card, isTitleEditable, isDescriptionEditable, isDuedateEditable } = this.props.editModeContent;
+    let { isEditMode, editModeContent } = this.props;
+    let { card, isTitleEditable, isDescriptionEditable, isDuedateEditable } = editModeContent;
+
     let containerClassName = "editCardModalContainer " + (isEditMode ? "show" : "hide");
+    let titleClassName = "modal-item modal-item-title";
+    let descriptionClassName = "modal-item modal-item-description";
+
     let cardTitle = card === null ? "" : card.title;
     let cardDescription = card === null ? "" : card.description;
+
+    let titleComponent = isTitleEditable ?
+        <input className={titleClassName} onKeyUp={this.handleTitleInputKeyUp} onChange={this.handleTitleInputChange}>{cardTitle}</input> :
+        <div className="modal-item modal-item-title" onClick={this.handleTitleDivClick}>{cardTitle}</div>;
+    let descriptionComponent = isDescriptionEditable ?
+        <input className={descriptionClassName} onKeyUp={this.handleDescriptionInputKeyUp} onChange={this.handleDescriptionInputChange}>{cardDescription}</input> :
+        <div className={descriptionClassName} onClick={this.handleDescriptionDivClick}>{cardDescription}</div>;
     return (
       <div className={containerClassName} onClick={this.handleClick} onKeyUp={this.handleKeyUp}>
         <div className="modal">
-          <div className="modal-item modal-item-title">
-            {cardTitle}
-          </div>
-          <div className="modal-item moda-item-description">
-            {cardDescription}
-          </div>
-          <button className="modal-item-button" type="button" onClick={this.saveButtonClicked}>Save</button>
+          {titleComponent}
+          {descriptionComponent}
+          {/* <button className="modal-item-button" type="button" onClick={this.saveButtonClicked}>Save</button> */}
         </div>
       </div>
     );

@@ -11,14 +11,32 @@ const kanbanboard = (state = api.getKanbanboardStates(), action) => {
                   card: action.card
               }
           });
-      case kanbanboardActionType.REFLECT_INPUT_CHANGE:
-          return Object.assign({}, state, {
-              card : {
-                  id: card.id,
-                  title: action.text,
-                  laneId: card.laneId
+    //   case kanbanboardActionType.REFLECT_INPUT_CHANGE:
+    //       return Object.assign({}, state, {
+    //           card : {
+    //               id: card.id,
+    //               title: action.text,
+    //               laneId: card.laneId
+    //           }
+    //       });
+      case kanbanboardActionType.TOGGLE_TITLE_EDIT_MODE:
+          let currentEditMode = state.editModeContent.isTitleEditable;
+          return {
+              ...state,
+              ...state.editModeContent, 
+              editModeContent : {
+                isTitleEditable: !currentEditMode
               }
-          });
+          };
+      case kanbanboardActionType.TOGGLE_DESCRIPTION_EDIT_MODE:
+          let currentEditMode = state.editModeContent.isDescriptionEditable;
+          return {
+              ...state,
+              ...editModeContent,
+              editModeContent: {
+                  isDesciptionEditable: !currentEditMode
+              }
+          };
       default:
           return state;
   }
