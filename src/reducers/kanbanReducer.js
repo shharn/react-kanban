@@ -2,7 +2,7 @@ import api from '../data/api';
 import * as kanbanboardActionType from '../types/kanbanboardActionType';
 
 const kanbanboard = (state = api.getKanbanboardStates(), action) => {
-  let { isEditMode, card } = state;
+  let { isEditMode, editModeContent } = state;
   switch(action.type) {
       case kanbanboardActionType.TOGGLE_CARD_EDIT_MODE:
           return Object.assign({}, state, {
@@ -20,23 +20,62 @@ const kanbanboard = (state = api.getKanbanboardStates(), action) => {
     //           }
     //       });
       case kanbanboardActionType.TOGGLE_TITLE_EDIT_MODE:
-          let currentEditMode = state.editModeContent.isTitleEditable;
           return {
               ...state,
-              ...state.editModeContent, 
               editModeContent : {
-                isTitleEditable: !currentEditMode
+                ...state.editModeContent,
+                isTitleEditable: !editModeContent.isTitleEditable
               }
           };
       case kanbanboardActionType.TOGGLE_DESCRIPTION_EDIT_MODE:
-          let currentEditMode = state.editModeContent.isDescriptionEditable;
           return {
               ...state,
-              ...editModeContent,
               editModeContent: {
-                  isDesciptionEditable: !currentEditMode
+                  ...state.editModeContent,
+                  isDescriptionEditable: !editModeContent.isDescriptionEditable
               }
           };
+      case kanbanboardActionType.TOGGLE_DUEDATE_EDIT_MODE: 
+          return {
+              ...state,
+              editModeContent: {
+                  ...state.editModeContent,
+                  isDueDateEditable: !editModeContent.isDueDateEditable
+              }
+          };
+      case kanbanboardActionType.REFLECT_TITLE_INPUT_CHANGE:
+          return {
+              ...state,
+              editModeContet: {
+                  ...state.editModeContent,
+                  card: {
+                      ...state.editModeContent.card,
+                      title: action.title
+                  }
+              }
+          }
+      case kanbanboardActionType.REFLECT_DESCRIPTION_INPUT_CHANGE:
+          return {
+              ...state,
+              editModeContent: {
+                  ...state.editModeContent,
+                  card: {
+                      ...state.editModeContent.card,
+                      description: action.description
+                  }
+              }
+          }
+      case kanbanboardActionType.REFLECT_DUEDATE_INPUT_CHANGE:
+          return {
+              ...state,
+              editModeContent: {
+                  ...state.editModeContent,
+                  card: {
+                      ...state.editModeContent.card,
+                      dueDate: action.dueDate
+                  }
+              }
+          }
       default:
           return state;
   }

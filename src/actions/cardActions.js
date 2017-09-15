@@ -14,20 +14,6 @@ export const addCard = (laneId, title) => {
 //         card: card
 //     }
 // }
-
-export const getAllCards = () => {
-    return {
-        type: cardActionType.GET_ALL_CARDS
-    };
-};
-
-export const deleteCard = (cardId) => {
-    return {
-        type: cardActionType.DELETE_CARD,
-        cardId
-    }
-};
-
 export const updateTitle = (cardId, title) => {
     return {
         type: cardActionType.UPDATE_TITLE,
@@ -48,6 +34,19 @@ export const updateDueDate = (cardId, dueDate) => {
     return {
         type: cardActionType.UPDATE_DUEDATE,
         cardId,
-        description
+        dueDate
+    }
+};
+
+export const getAllCards = () => {
+    return {
+        type: cardActionType.GET_ALL_CARDS
+    };
+};
+
+export const deleteCard = (cardId) => {
+    return {
+        type: cardActionType.DELETE_CARD,
+        cardId
     }
 };

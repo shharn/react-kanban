@@ -8,7 +8,7 @@ import { updateTitle, updateDescription, updateDueDate } from '../actions/cardAc
 const mapStateToProps = (state, ownProps) => {
   return {
     isEditMode: state.kanbanboard.isEditMode,
-    editModeContent: state.editModeContent
+    editModeContent: state.kanbanboard.editModeContent
   }
 };
 
@@ -18,7 +18,7 @@ const mapDispatchToProps = (dispatch) => {
     toggleCardEditMode: (card) => dispatch(toggleCardEditMode(card)),
     toggleTitleEditMode: () => dispatch(toggleTitleEditMode()),
     toggleDescriptionEditMode: () => dispatch(toggleDescriptionEditMode()),
-    toggleDueDateEditMode: () => dispatch(toggleDuedateEditMode()),
+    toggleDueDateEditMode: () => dispatch(toggleDueDateEditMode()),
     reflectTitleInputChange: (title) => dispatch(reflectTitleInputChange(title)),
     reflectDescriptionInputChange: (description) => dispatch(reflectDescriptionInputChange(description)),
     reflectDueDateInputChange: (dueDate) => dispatch(reflectDueDateInputChange(dueDate)),
