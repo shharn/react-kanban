@@ -8,6 +8,7 @@ class EditCardModal extends Component {
     this.handleClick = this.handleClick.bind(this);
     this.saveButtonClicked = this.saveButtonClicked.bind(this);
     this.handleInputChange = this.handleInputChange.bind(this);
+    this.handleInputKeyUp = this.handleInputKeyUp.bind(this);
   }
 
   handleClick(clickEvent) {
@@ -25,14 +26,30 @@ class EditCardModal extends Component {
     this.props.toggleCardEditMode(null);
   }
 
+  handleInputKeyUp(keyEvent) {
+    if (keyEvent.which === keycode.codes["esc"]) {
+      this.props.toggleCardEditMode(null);
+    } else if (keyEvent.which === keycode.codes["enter"]) {
+      this.props.saveCard(this.props.card);
+      this.props.toggleCardEditMode(null);
+    }
+  }
+
   render() {
-    let { isEditMode, card } = this.props;
+    let { isEditMode } = this.props;
+    let { card, isTitleEditable, isDescriptionEditable, isDuedateEditable } = this.props.editModeContent;
     let containerClassName = "editCardModalContainer " + (isEditMode ? "show" : "hide");
     let cardTitle = card === null ? "" : card.title;
+    let cardDescription = card === null ? "" : card.description;
     return (
-      <div className={containerClassName} onClick={this.handleClick}>
+      <div className={containerClassName} onClick={this.handleClick} onKeyUp={this.handleKeyUp}>
         <div className="modal">
-          <input type="text" className="modal-item" value={cardTitle} onChange={this.handleInputChange} onClick={this.handleInputKeyUp} />
+          <div className="modal-item modal-item-title">
+            {cardTitle}
+          </div>
+          <div className="modal-item moda-item-description">
+            {cardDescription}
+          </div>
           <button className="modal-item-button" type="button" onClick={this.saveButtonClicked}>Save</button>
         </div>
       </div>

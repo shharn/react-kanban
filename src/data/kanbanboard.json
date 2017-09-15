@@ -1,4 +1,9 @@
 {
   "isEditMode": false,
-  "card": null
+  "editModeContent" : {
+    "card": null,
+    "isTitleEditable": false,
+    "isDescriptionEditable":  false,
+    "isDuedateEditable": false
+  }
 }

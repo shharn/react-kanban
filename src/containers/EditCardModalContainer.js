@@ -6,7 +6,7 @@ import { editCard } from '../actions/cardActions';
 const mapStateToProps = (state, ownProps) => {
   return {
     isEditMode: state.kanbanboard.isEditMode,
-    card: state.kanbanboard.card
+    editModeContent: state.editModeContent
   }
 };
 

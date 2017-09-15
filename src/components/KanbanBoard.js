@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import Lane from '../containers/LaneContainer';
 import '../css/KanbanBoard.css';
 import EditCardModal from '../containers/EditCardModalContainer';
-import keycode from 'keycode';
 
 export default class KanbanBoard extends Component {
     render() {

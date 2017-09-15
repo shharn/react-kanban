@@ -1,6 +1,7 @@
 import { connect } from 'react-redux';
 import Card from '../components/Card';
 import { toggleCardEditMode } from '../actions/kanbanboardActions';
+import { deleteCard } from '../actions/cardActions';
 
 const mapStateToProps = (state, ownProps) => {
   return {
@@ -10,7 +11,8 @@ const mapStateToProps = (state, ownProps) => {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    toggleEditMode: (card) => dispatch(toggleCardEditMode(card))
+    toggleEditMode: (card) => dispatch(toggleCardEditMode(card)),
+    deleteCard: (cardId) => dispatch(deleteCard(cardId))
   }
 };
 

@@ -37,12 +37,28 @@
   height: 1.6rem;
   font-size: 1.2rem;
   display: block;
+  position: relative;
 }
 
 input.modal-item {
   border: 3px solid #cccccc;
   resize: none;
   padding: 2px 5px;
+}
+
+.modal-item-title {
+  font-weight: bold;
+}
+
+input.modal-item:after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 1px;
+  width: 99%;
+  margin: 2px auto;
+  background-color: #000;
 }
 
 .modal-item-button {
@@ -56,3 +72,4 @@ input.modal-item {
   border-radius: 5px;
   cursor: pointer;
 }
+

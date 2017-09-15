@@ -1,5 +1,4 @@
 import * as cardActionType from '../types/cardActionType';
-import api from '../data/api';
 
 export const addCard = (laneId, title) => {
     return {
@@ -20,4 +19,11 @@ export const getAllCards = () => {
     return {
         type: cardActionType.GET_ALL_CARDS
     };
+};
+
+export const deleteCard = (cardId) => {
+    return {
+        type: cardActionType.DELETE_CARD,
+        cardId
+    }
 };

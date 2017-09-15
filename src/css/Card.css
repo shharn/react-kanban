@@ -7,4 +7,31 @@
     background-color: #eee;
     display: block;
     cursor: pointer;
+    position: relative;
+    word-wrap: break-word;
+    white-space: normal;
+}
+
+.card-title {
+    margin-right: 10px;
+}
+
+.card-duedate {
+    position: relative;
+    margin-top: 5px;
+    font-size: .7rem;
+    text-align: right;
+    font-weight: bold;
+}
+
+.delete-button {
+    position: absolute;
+    right: 0;
+    top: 0;
+    padding: 5px;
+    margin: 5px;
+    cursor: pointer;
+    border: none;
+    background-color: inherit;
+    color: #cbcbcb;
 }
