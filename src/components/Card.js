@@ -37,7 +37,7 @@ export default class Card extends Component {
                     {card.title}
                 </div>
                 <div className="card-duedate">
-                    {this.getTimeString(new Date(card.dueDate))}
+                    {card.dueDate === undefined ? "" : this.getTimeString(new Date(card.dueDate))}
                 </div>
             </div>
         )

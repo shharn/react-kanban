@@ -1,10 +1,9 @@
 import * as cardActionType from '../types/cardActionType';
 
-export const addCard = (laneId, title) => {
+export const addCard = (card) => {
     return {
         type:cardActionType.ADD_CARD,
-        laneId: laneId,
-        title: title
+        newCard: card
     };
 };
 

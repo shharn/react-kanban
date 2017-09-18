@@ -61,7 +61,7 @@ class EditCardModal extends Component {
     if (keyEvent.which === keycode.codes['esc']) {
       this.props.toggleTitleEditMode();
     } else if (keyEvent.which === keycode.codes['enter']) {
-      let card = this.editModeContet.card;
+      let card = this.editModeContent.card;
       this.props.updateTitle(card.id, card.title);
     }
   }

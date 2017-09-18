@@ -8,10 +8,13 @@ let nextCommentId = 5;
 
 export default {
     getAllCards: () => ( cards ),
-    addCard: (title, laneId) => cards.push({
+    addCard: (card) => cards.push({
         id: nextCardId++,
-        title: title,
-        laneId: laneId
+        title: card.title,
+        description: card.description,
+        dueDate: card.dueDate,
+        laneId: card.laneId,
+        comments: card.comments
     }),
     deleteCard: (cardId) => cards.filter(card => card.id !== cardId),
     getAllComments: () => ( comments ),
