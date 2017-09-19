@@ -30,7 +30,7 @@ class CardTitle extends Component {
   render() {
     let titleClassName = "modal-item-title";
     let { card, isTitleEditable } = this.props;
-    let cardTitle = card === null || card.Title === "" ? "No Title" : card.title;
+    let cardTitle = !isTitleEditable && (card === null || card.Title === "") ? "No Title" : card.title;
     let titleComponent = isTitleEditable ?
       <input className={titleClassName} onKeyUp={this.handleTitleInputKeyUp} onChange={this.handleTitleInputChange} value={cardTitle}/> :
       <div className={titleClassName} onClick={this.handleClick}>{cardTitle}</div>;

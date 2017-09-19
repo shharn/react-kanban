@@ -30,7 +30,7 @@ class CardDescription extends Component {
   render() {
     let { card, isDescriptionEditable } = this.props;
     let descriptionClassName = "modal-item-description";
-    let cardDescription = card === null || card.description === "" ? "No Description" : card.description;
+    let cardDescription = !isDescriptionEditable && (card === null || card.description === "") ? "No Description" : card.description;
     let descriptionComponent = isDescriptionEditable ?
     <input className={descriptionClassName} onKeyUp={this.handleDescriptionInputKeyUp} onChange={this.handleDescriptionInputChange} value={cardDescription}/> :
     <div className={descriptionClassName} onClick={this.handleClick}>{cardDescription}</div>;

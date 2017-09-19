@@ -31,7 +31,7 @@ class CardDueDate extends Component {
   render() {
     let  { card, isDueDateEditable } = this.props;
     let duedateClassName = "modal-item-duedate";
-    let cardDueDate = card === null || card.dueDate === "" ? "No DueDate" : card.dueDate;
+    let cardDueDate = !isDueDateEditable && (card === null || card.dueDate === "") ? "No DueDate" : card.dueDate;
     let duedateComponent = isDueDateEditable ?
       <input className={duedateClassName} onKeyUp={this.handleDueDateInputKeyUp} onChange={this.handleDueDateInputChange} value={cardDueDate}/> :
       <div className={duedateClassName} onClick={this.handleClick}>{cardDueDate}</div>;
