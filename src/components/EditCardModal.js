@@ -3,7 +3,7 @@ import CardTitle from '../containers/CardTitleContainer';
 import CommentWrapper from './CommentWrapper';
  import CardDescription from '../containers/CardDescriptionContainer';
  import CardDueDate from '../containers/CardDueDateContainer';
-// import CheckList from '../containers/CheckListContainer';
+ import CheckList from './CheckList';
 import '../css/EditCardModal.css';
 import keycode from 'keycode';
 
@@ -36,6 +36,7 @@ class EditCardModal extends Component {
         <div className="modal">
           <CardTitle  card={card} isTitleEditable={isTitleEditable}/>
           <CardDescription card={card} isDescriptionEditable={isDescriptionEditable}/>
+          <CheckList checkListItems={card.checklist ? card.checklist : null}/>
           <CardDueDate card={card} isDueDateEditable={isDueDateEditable}/>
           <CommentWrapper />
         </div>

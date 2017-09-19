@@ -73,7 +73,7 @@
   position: absolute;
 }
 
-.modal-item-description:after {
+/* .modal-item-description:after {
   content: "";
   width: 99%;
   height: 2px;
@@ -82,7 +82,7 @@
   top: 100%;
   background-color: #ccc;
   position: absolute;
-}
+} */
 
 .modal-item-duedate {
   margin-top: .7rem;
@@ -109,3 +109,6 @@
   cursor: pointer;
 }
 
+.modal-item-checklistitem {
+
+}
