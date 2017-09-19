@@ -31,13 +31,13 @@ export default class Card extends Component {
     render() {
         let card = this.props.card;
         return (
-            <div id={card.id} className="card" onClick={this.handleClick}>
+            <div id={card.id} className="card" key={card.id} onClick={this.handleClick}>
                 <button type="button" className="delete-button" onClick={this.handleDeleteButtonClicked}>X</button>
                 <div className="card-title">
                     {card.title}
                 </div>
                 <div className="card-duedate">
-                    {card.dueDate === undefined ? "" : this.getTimeString(new Date(card.dueDate))}
+                    {card.dueDate === undefined ? "" : card.dueDate}
                 </div>
             </div>
         )

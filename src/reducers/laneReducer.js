@@ -20,8 +20,8 @@ const lanes = (state = api.getAllLanes(), action) => {
       case laneActionType.INPUT_CONTENT_CHANGED:
           return Object.assign({}, state, {
               [targetLaneId]: {
-                  inputContent: inputContent,
-                  isEditing: true
+                  ...state[targetLaneId],
+                  inputContent
               }
           });
       default:

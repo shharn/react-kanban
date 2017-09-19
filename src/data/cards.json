@@ -3,32 +3,50 @@
         "id": 1,
         "title": "Test Card1",
         "description": "Test Card 1 Description",
-        "dueDate": 1505370058837,
+        "dueDate": "17-09-10",
         "comments": [],
+        "checklist": [
+            {
+                "content": "Test Checklist 1",
+                "isDone": false
+            },
+            {
+                "content": "Test Checklist 2",
+                "isDone": true
+            }
+        ],
         "laneId": "todo"
     },
     {
         "id": 2,
         "title": "Test Card2",
         "description": "Test Card 2 Description",
-        "dueDate": 1505370059000,
+        "dueDate": "17-09-12",
         "comments": [],
+        "checklist": [
+            {
+                "content": "Test Checklist 2-1",
+                "isDone": true
+            }
+        ],
         "laneId": "inprogress"
     },
     {
         "id": 3,
         "title": "Test Card3",
         "description": "Test Card 3 Description",
-        "dueDate": 1505370060000,
+        "dueDate": "17-09-22",
         "comments": [],
+        "checklist": [],
         "laneId": "pendding"
     },
     {
         "id": 4,
         "title": "Test Card4",
         "description": "Test Card 4 Description",
-        "dueDate": 1505370061000,
+        "dueDate": "17-07-21",
         "comments": [],
+        "checklist": [],
         "laneId": "done"
     }
 ]

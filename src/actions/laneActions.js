@@ -8,7 +8,7 @@ export const toggleEditableCard = (laneId, currentEditMode) => {
     };
 };
 
-export const inputContentChanged = (laneId, newInputContent) => {
+export const reflectAddCardInputChange = (laneId, newInputContent) => {
     return {
         type: laneAction.INPUT_CONTENT_CHANGED,
         targetLaneId: laneId,

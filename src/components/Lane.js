@@ -23,7 +23,7 @@ export default class Lane extends Component {
             }
         });
         return (
-            <li className="lane" id={this.props.id} onClick={this.handleClickOnEmptySpace}>
+            <li className="lane" key={this.props.id} id={this.props.id} onClick={this.handleClickOnEmptySpace}>
                 <div className="title">{this.props.title}</div>
                 {cards}
                 <AddCard laneId={laneId} />

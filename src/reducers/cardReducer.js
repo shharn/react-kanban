@@ -5,11 +5,8 @@ const cards = (state = api.getAllCards(), action) => {
   let { cardId, title, description, dueDate } = action;
   switch (action.type) {
       case cardActionType.ADD_CARD:
-        // api.addCard(action.newCard);
-        return [
-          ...state,
-          action.newCard
-        ]
+        api.addCard(action.newCard);
+        return Object.assign([], api.getAllCards())
       case cardActionType.GET_ALL_CARDS:
         return state;
       // case cardActionType.EDIT_CARD:
