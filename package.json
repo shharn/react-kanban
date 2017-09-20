@@ -4,6 +4,7 @@
   "private": true,
   "dependencies": {
     "immutable-helper": "0.0.5",
+    "immutable-js": "^0.3.1-6",
     "keycode": "^2.1.9",
     "react": "^15.6.1",
     "react-dom": "^15.6.1",

@@ -21,7 +21,7 @@ class CardDueDate extends Component {
   
   handleDueDateInputChange(changeEvent) {
     let stringDate = changeEvent.target.value;
-    this.props.reflectDueDateInputChange(changeEvent.target.value);
+    this.props.reflectDueDateInputChange(stringDate);
   }
 
   handleClick() {

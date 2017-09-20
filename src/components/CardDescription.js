@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import keycode from 'keycode';
+import CheckList from './CheckList';
 
 class CardDescription extends Component {
   constructor(props) {
@@ -36,7 +37,10 @@ class CardDescription extends Component {
     <div className={descriptionClassName} onClick={this.handleClick}>{cardDescription}</div>;
     return (
       <div className="modal-item">
-        {descriptionComponent}
+        <div className="modal-item-description-wrapper">
+          {descriptionComponent}
+          <CheckList checkListItems={typeof card === 'undefined' || !card ? [] : card.checklist}/>
+        </div>
       </div>
     );
   }

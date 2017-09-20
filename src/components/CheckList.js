@@ -8,10 +8,11 @@ class CheckList extends Component {
 
   render() {
     let checkListItems = this.props.checkListItems.map(item => {
-      return <CheckListItem item={item} />
+      return <CheckListItem key={item.id} item={item} />
     });
     return (
-      <div className="modal-item">
+      <div className="modal-item-checklist-wrapper">
+        <div className="modal-item-checklist-header">+ CheckList</div>
         {checkListItems}
       </div>
     );
