@@ -74,9 +74,9 @@ input.modal-item-title {
   content: "";
   width: 99%;
   height: 2px;
-  margin: 1rem auto;
+  margin: auto;
   left: 0;
-  top: -25%;
+  top: -15px;
   background-color: #ccc;
   position: absolute;
 }
@@ -109,9 +109,10 @@ input.modal-item-description {
 .modal-item-duedate {
   margin-top: .7rem;
   margin-bottom: .2rem;
-  text-align: center;
+  margin-right: .3rem;
+  text-align: right;
   float: right;
-  width: 15%;
+  width: 30%;
   font-size: .9rem;
   position: relative;
 }

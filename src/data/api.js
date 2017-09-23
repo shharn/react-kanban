@@ -14,7 +14,8 @@ export default {
         description: card.description,
         dueDate: card.dueDate,
         laneId: card.laneId,
-        comments: card.comments
+        comments: card.comments,
+        checklist: []
     }),
     deleteCard: (cardId) => cards.filter(card => card.id !== cardId),
     getAllComments: () => ( comments ),
