@@ -143,12 +143,14 @@ input.modal-item-description {
 
 .modal-item-checklist-header {
   font-size: 1rem;
+  margin-left: .4rem;
 }
 
 .modal-item-checklistitem {
-  margin: 2px;
+  margin: .4em;
   position: relative;
   display:block;
+  font-size: .9rem;
 }
 
 .modal-item-checklistitem .item-completed {
@@ -157,6 +159,17 @@ input.modal-item-description {
 
 .modal-item-checklistitem-content {
   vertical-align: middle;
-  font-size: .9rem;
   display: inline-block;
+}
+
+.modal-item-addchecklist {
+  color: rgba(0,0,0,0.5);
+  margin-left: 12px;
+  padding: .2rem .3rem;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.modal-item-addchecklist:hover {
+  background-color: rgba(0,0,0,0.2);
 }

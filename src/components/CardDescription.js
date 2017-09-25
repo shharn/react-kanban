@@ -39,7 +39,8 @@ class CardDescription extends Component {
       <div className="modal-item">
         <div className="modal-item-description-wrapper">
           {descriptionComponent}
-          <CheckList checkListItems={typeof card === 'undefined' || !card ? [] : card.checklist}/>
+          <CheckList cardId={typeof card === 'undefined' || !card ? -1 : card.id} 
+              checkListData={typeof card === 'undefined' || !card ? {} : card.checkListData}/>
         </div>
       </div>
     );

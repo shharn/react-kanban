@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import CheckListItem from './CheckListItem';
+import AddCheckList from '../containers/AddCheckList';
 
 class CheckList extends Component {
   constructor(props) {
@@ -7,13 +8,16 @@ class CheckList extends Component {
   }
 
   render() {
-    let checkListItems = this.props.checkListItems.map(item => {
-      return <CheckListItem key={item.id} item={item} />
+    let { cardId, checkListData } = this.props;
+    let checkListItems = checkListData.checkListItems || [];
+    let checkListItemsComponents = checkListItems.map(item => {
+      return <CheckListItem key={item.id} cardId={cardId} />
     });
     return (
       <div className="modal-item-checklist-wrapper">
         <div className="modal-item-checklist-header">+ CheckList</div>
-        {checkListItems}
+        {checkListItemsComponents}
+        <AddCheckList />
       </div>
     );
   }
