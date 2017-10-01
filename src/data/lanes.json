@@ -1,18 +1,22 @@
 {
     "todo": {
         "isEditing": false,
-        "inputContent": ""
+        "inputContent": "",
+        "cards": [1]
     },
     "inprogress": {
         "isEditing": false,
-        "inputContent": ""
+        "inputContent": "",
+        "cards": [2]
     },
     "pendding": {
         "isEditing": false,
-        "inputContent": ""
+        "inputContent": "",
+        "cards": [3]
     },
     "done": {
         "isEditing": false,
-        "inputContent": ""
+        "inputContent": "",
+        "cards": [4]
     }
 }

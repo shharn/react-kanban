@@ -5,7 +5,6 @@ class CardTitle extends Component {
   constructor(props) {
     super(props);
     this.handleTitleInputKeyUp = this.handleTitleInputKeyUp.bind(this);
-    this.handleTitleInputChange = this.handleTitleInputChange.bind(this);
     this.handleClick = this.handleClick.bind(this);
   }
   
@@ -17,22 +16,17 @@ class CardTitle extends Component {
     if (keyEvent.which === keycode.codes['esc']) {
       this.props.toggleTitleEditMode();
     } else if (keyEvent.which === keycode.codes['enter']) {
-      let card = this.props.card;
-      this.props.updateTitle(card.id, card.title);
+      this.props.updateTitle(this.props.card.id, this.textInput.value);
       this.props.toggleTitleEditMode();
     }
-  }
-
-  handleTitleInputChange(changeEvent) {
-    this.props.reflectTitleInputChange(changeEvent.target.value);
   }
 
   render() {
     let titleClassName = "modal-item-title";
     let { card, isTitleEditable } = this.props;
-    let cardTitle = !isTitleEditable && (card === null || card.Title === "") ? "No Title" : card.title;
+    let cardTitle = !isTitleEditable && (typeof card === 'undefined' || card === null || card.title === "") ? "No Title" : card.title;
     let titleComponent = isTitleEditable ?
-      <input className={titleClassName} onKeyUp={this.handleTitleInputKeyUp} onChange={this.handleTitleInputChange} value={cardTitle}/> :
+      <input className={titleClassName} onKeyUp={this.handleTitleInputKeyUp} ref={(input) => this.textInput = input} defaultValue={card.title}/> :
       <div className={titleClassName} onClick={this.handleClick}>{cardTitle}</div>;
     return (
       <div className="modal-item">

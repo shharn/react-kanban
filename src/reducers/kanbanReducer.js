@@ -8,7 +8,8 @@ const kanbanboard = (state = api.getKanbanboardStates(), action) => {
           return Object.assign({}, state, {
               isEditMode: !isEditMode,
               editModeContent : {
-                  card: action.card
+                  ...state.editModeContent,
+                  cardId: action.cardId
               }
           });
     //   case kanbanboardActionType.REFLECT_INPUT_CHANGE:

@@ -10,7 +10,7 @@ export default class Card extends Component {
 
     handleClick(clickEvent) {
         if (clickEvent._targetInst._hostNode.className.indexOf("card") !== -1) {
-            this.props.toggleEditMode(this.props.card);
+            this.props.toggleEditMode(this.props.card.id);
         }
     }
 

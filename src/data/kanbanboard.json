@@ -1,9 +1,9 @@
 {
   "isEditMode": false,
   "editModeContent" : {
-    "card": null,
+    "cardId": -1,
     "isTitleEditable": false,
     "isDescriptionEditable":  false,
     "isDueDateEditable": false
+    }
   }
-}

@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import CheckListItem from './CheckListItem';
+import CheckListItem from '../containers/CheckListItemContainer';
 import AddCheckList from '../containers/AddCheckList';
 
 class CheckList extends Component {
@@ -9,9 +9,9 @@ class CheckList extends Component {
 
   render() {
     let { cardId, checkListData } = this.props;
-    let checkListItems = checkListData.checkListItems || [];
-    let checkListItemsComponents = checkListItems.map(item => {
-      return <CheckListItem key={item.id} cardId={cardId} />
+    let checkListItemIds = (typeof checkListData.checkListItemIds === 'undefined') ? [] : checkListData.checkListItemIds;
+    let checkListItemsComponents = checkListItemIds.map(id => {
+      return <CheckListItem key={id} cardId={cardId} id={id} whoIsEditMode={checkListData.whoIsEditMode}/>
     });
     return (
       <div className="modal-item-checklist-wrapper">

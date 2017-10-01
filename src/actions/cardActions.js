@@ -7,12 +7,6 @@ export const addCard = (card) => {
     };
 };
 
-// export const editCard = (card) => {
-//     return {
-//         type: cardActionType.EDIT_CARD,
-//         card: card
-//     }
-// }
 export const updateTitle = (cardId, title) => {
     return {
         type: cardActionType.UPDATE_TITLE,
@@ -34,6 +28,14 @@ export const updateDueDate = (cardId, dueDate) => {
         type: cardActionType.UPDATE_DUEDATE,
         cardId,
         dueDate
+    }
+};
+
+export const updateCheckListEditTarget = (cardId, checkListItemId) => {
+    return {
+        type: cardActionType.UPDATE_CHECKLIST_EDIT_TARGET,
+        cardId,
+        checkListItemId
     }
 };
 

@@ -8,7 +8,7 @@
         "checkListData": {
             "isEditMode": false,
             "whoIsEditMode": -1, 
-            "checkListItems": [1, 2]
+            "checkListItemIds": [1, 2]
         },
         "laneId": "todo"
     },
@@ -18,7 +18,11 @@
         "description": "Test Card 2 Description",
         "dueDate": "17-09-12",
         "comments": [],
-        "checklist": [3],
+        "checkListData": {
+            "isEditMode": false,
+            "whoIsEditMode": -1,
+            "checkListItemIds": [3]
+        },
         "laneId": "inprogress"
     },
     {
@@ -27,7 +31,11 @@
         "description": "Test Card 3 Description",
         "dueDate": "17-09-22",
         "comments": [],
-        "checklist": [],
+        "checkListData": {
+            "isEditMode": false,
+            "whoIsEditMode": -1,
+            "checkListItemIds": []
+        },
         "laneId": "pendding"
     },
     {
@@ -36,7 +44,11 @@
         "description": "Test Card 4 Description",
         "dueDate": "17-07-21",
         "comments": [],
-        "checklist": [],
+        "checkListData": {
+            "isEditMode": false,
+            "whoIsEditMode": -1,
+            "checkListItemIds": []
+        },
         "laneId": "done"
     }
 ]

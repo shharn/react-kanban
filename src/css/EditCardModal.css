@@ -63,6 +63,7 @@
 input.modal-item-title {
   margin-bottom: .6rem;
   font-size: inherit;
+  border-radius: 3px;
 }
 
 .modal-item-description-wrapper {
@@ -104,6 +105,7 @@ input.modal-item-title {
 input.modal-item-description {
   width: 99%;
   margin: .1rem auto;
+  border-radius: 3px;
 }
 
 .modal-item-duedate {
@@ -160,8 +162,14 @@ input.modal-item-description {
 .modal-item-checklistitem-content {
   vertical-align: middle;
   display: inline-block;
+  margin-left: .3rem;
 }
 
+input.modal-item-checklistitem-content {
+  border-radius: 3px;
+  font-size: .9rem;
+  height: .9rem;
+}
 .modal-item-addchecklist {
   color: rgba(0,0,0,0.5);
   margin-left: 12px;

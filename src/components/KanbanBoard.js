@@ -8,10 +8,10 @@ export default class KanbanBoard extends Component {
         return (
             <div className="appContainer">
                 <div className="kanbanBoard">
-                    <Lane id="todo" title="To do" />
-                    <Lane id="inprogress" title="In Progress" />
-                    <Lane id="pendding" title="Pendding" />
-                    <Lane id="done" title="Done" />
+                    <Lane laneId="todo" title="To do" />
+                    <Lane laneId="inprogress" title="In Progress" />
+                    <Lane laneId="pendding" title="Pendding" />
+                    <Lane laneId="done" title="Done" />
                 </div>
                 <EditCardModal />
             </div>

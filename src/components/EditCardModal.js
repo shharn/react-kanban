@@ -17,17 +17,17 @@ class EditCardModal extends Component {
     let targetNodeClassName = clickEvent._targetInst._hostNode.className;
     let { isTitleEditable, isDescriptionEditable, isDueDateEditable } = this.props.editModeContent;
     if (targetNodeClassName.indexOf("editCardModalContainer") !== -1) {
-      this.props.toggleCardEditMode(null);
+      this.props.toggleCardEditMode(-1);
      }
   }
 
   handleCloseButtonClick(clickEvent) {
-    this.props.toggleCardEditMode(null);
+    this.props.toggleCardEditMode(-1);
   }
 
   render() {
-    let { isEditMode, editModeContent } = this.props;
-    let { card, isTitleEditable, isDescriptionEditable, isDueDateEditable } = editModeContent;
+    let { isEditMode, editModeContent, card } = this.props;
+    let { isTitleEditable, isDescriptionEditable, isDueDateEditable } = editModeContent;
     let containerClassName = "editCardModalContainer " + (isEditMode ? "show" : "hide");
     return (
       <div className={containerClassName} onClick={this.handleSpaceClick} onKeyUp={this.handleKeyUp}>

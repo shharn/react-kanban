@@ -10,22 +10,19 @@ export default class Lane extends Component {
     }
 
     handleClickOnEmptySpace(event) {
-        if (this.props.isEditing && event.target.className === "lane") {
-            this.props.toggleAddCard(this.props.id, this.props.isEditing);
+        let { laneId, isEditing, title } = this.props;
+        if (isEditing && event.target.className === "lane") {
+            this.props.toggleAddCard(laneId, isEditing);
         }
     }
 
     render() {
-        let laneId = this.props.id;
-        let cards = this.props.cards.map(card => {
-            if (card.laneId === laneId) {
-                return <Card card={card} key={card.id}/>
-            }
-        });
+        let { laneId, title, cards } = this.props;
+        let cardComponents = cards.map(card => ( <Card card={card} key={card.id}/> ));
         return (
-            <li className="lane" key={this.props.id} id={this.props.id} onClick={this.handleClickOnEmptySpace}>
-                <div className="title">{this.props.title}</div>
-                {cards}
+            <li className="lane" key={laneId} id={laneId} onClick={this.handleClickOnEmptySpace}>
+                <div className="title">{title}</div>
+                {cardComponents}
                 <AddCard laneId={laneId} />
             </li>
         );

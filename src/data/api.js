@@ -10,7 +10,7 @@ let nextCheckListItemId = 5;
 
 const addCheckListItem = (cardId, content)  => {
     let newItem = {
-        id: newCheckListItemId++,
+        id: nextCheckListItemId++,
         content: content,
         isDone: false        
     };
@@ -22,7 +22,7 @@ const addCheckListItem = (cardId, content)  => {
 const getCheckListItemById = (id) => ( checkListItems.filter(item => item.id === id) );
 
 const getFlattendCard = (card) => {
-    let checkListItemIds = card.checkListData.checkListItems;
+    let checkListItemIds = card.checkListData.checkListItemIds;
     let checkListItems = checkListItemIds.map(id => {
         return getCheckListItemById(id)
     });
@@ -30,17 +30,15 @@ const getFlattendCard = (card) => {
     return card;
 };
 
+const addCard = (card) => {
+    card.id = nextCardId++;
+    cards.push(card);
+    lanes[card.laneId].cards.push(card.id);
+}
+
 export default {
     getAllCards: () => ( cards.map(card => ( getFlattendCard(card) )) ),
-    addCard: (card) => cards.push({
-        id: nextCardId++,
-        title: card.title,
-        description: card.description,
-        dueDate: card.dueDate,
-        laneId: card.laneId,
-        comments: card.comments,
-        checklist: []
-    }),
+    addCard: addCard,
     deleteCard: (cardId) => cards.filter(card => card.id !== cardId),
     getAllComments: () => ( comments ),
     getAllLanes: () => ( lanes ),

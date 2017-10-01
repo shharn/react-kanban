@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux';
-import { toggleEditableCard, reflectAddCardInputChange } from '../actions/laneActions';
+import { toggleEditableCard } from '../actions/laneActions';
 import { addCard } from '../actions/cardActions';
 import keycode from 'keycode';
 import '../css/AddCard.css';
@@ -10,7 +10,6 @@ class AddCard extends Component {
         super(props);
         this.handleClick = this.handleClick.bind(this);
         this.handleKeyUp = this.handleKeyUp.bind(this);
-        this.handleInputChange = this.handleInputChange.bind(this);
     }
 
     handleClick() {
@@ -20,11 +19,16 @@ class AddCard extends Component {
     handleKeyUp(keyEvent) {
         if (keyEvent.which === keycode.codes['enter']) {
             let newCard = {
-                title: this.props.inputContent,
+                title: this.textInput.value,
                 laneId: this.props.laneId,
                 dueDate: "",
                 description: "",
-                comments: []
+                comments: [],
+                checkListData: {
+                    checkListItemIds: [],
+                    whoIsEditMode: -1,
+                    isEditMode: false
+                }
             };
             this.props.addCard(newCard);
             this.props.toggleEditMode(this.props.laneId, this.props.isEditing);
@@ -33,14 +37,10 @@ class AddCard extends Component {
         }
     }
 
-    handleInputChange(changeEvent) {
-        let updatedInputContent = changeEvent.target.value;
-        this.props.reflectAddCardInputChange(this.props.laneId, updatedInputContent);
-    }
-
     render() {
         let content = this.props.isEditing ?
-            <input className="add-card-editable" type="text" placeholder="Enter the content" onKeyUp={this.handleKeyUp} onChange={this.handleInputChange}/> :
+            <input className="add-card-editable" type="text" placeholder="Enter the content" 
+                onKeyUp={this.handleKeyUp} ref={(input) => this.textInput = input}/> :
             <div className="add-card-not-editable" onClick={this.handleClick}>Add Card</div>;
         return (
             <div className="addCard">
@@ -61,8 +61,7 @@ const mapStateToProps = (state, ownProps) => {
 const mapDispatchToProps = (dispatch) => {
     return {
         toggleEditMode: (laneId, currentEditMode) => dispatch(toggleEditableCard(laneId, currentEditMode)),
-        addCard: (card) => dispatch(addCard(card)),
-        reflectAddCardInputChange: (laneId, title) => dispatch(reflectAddCardInputChange(laneId, title))
+        addCard: (card) => dispatch(addCard(card))
     };
 };
 

@@ -2,7 +2,7 @@ import api from '../data/api';
 import * as cardActionType from '../types/cardActionType';
 
 const cards = (state = api.getAllCards(), action) => {
-  let { cardId, title, description, dueDate } = action;
+  let { cardId, title, description, dueDate, checkListItemId } = action;
   switch (action.type) {
       case cardActionType.ADD_CARD:
         api.addCard(action.newCard);
@@ -46,6 +46,19 @@ const cards = (state = api.getAllCards(), action) => {
             dueDate: dueDate
           };
         });
+      case cardActionType.UPDATE_CHECKLIST_EDIT_TARGET:
+      return state.map(card => {
+        if (card.id !== cardId) {
+          return card;
+        }
+        return {
+          ...card,
+          checkListData: {
+            ...card.checkListData,
+            whoIsEditMode: checkListItemId
+          }
+        }
+      });
       case cardActionType.DELETE_CARD:
         api.deleteCard(action.cardId);
         return state.filter(card => card.id !== action.cardId);
