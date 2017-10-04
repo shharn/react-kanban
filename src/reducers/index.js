@@ -1,12 +1,13 @@
 import { combineReducers } from 'redux';
-import * as cardActionType from '../types/cardActionType';
-import * as laneActionType from '../types/laneActionType';
-import api from '../data/api';
-import cards from './cardReducer';
-import lanes from './laneReducer';
-import kanbanboard from './kanbanReducer';
-import checkList from './checkListReducer';
+import cards from './domain/cardReducer';
+import lanes from './domain/laneReducer';
+import checkList from './domain/checkListReducer';
+import comments from './domain/commentReducer';
+import lane from './ui/laneReducer-ui';
+import editModal from './ui/editModalReducer-ui';
 
-const kanbanReducer = combineReducers({ cards, lanes, kanbanboard, checkList });
+const domain = combineReducers({checkList, comments, cards, lanes});
+const ui = combineReducers({lane, editModal});
+const rootReducer = combineReducers({domain, ui});
 
-export default kanbanReducer;
+export default rootReducer;

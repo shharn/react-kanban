@@ -1,8 +1,8 @@
-import cards from './cards.json';
-import lanes from './lanes.json';
-import kanbanboard from './kanbanboard.json';
-import comments from './comments.json';
-import checkListItems from './checkListItems.json';
+import cards from './cards';
+import lanes from './lanes';
+import kanbanboard from './kanbanboard';
+import comments from './comments';
+import checkListItems from './checkListItems';
 
 let nextCardId = 5;
 let nextCommentId = 5;
@@ -34,7 +34,18 @@ const addCard = (card) => {
     card.id = nextCardId++;
     cards.push(card);
     lanes[card.laneId].cards.push(card.id);
-}
+};
+
+const deleteCard = (cardId) => {
+    let laneId = cards.find(card => card.id === cardId).laneId;
+    // delete card from cards
+    let cardIndex = cards.findIndex(card => card.id === cardId);
+    cards.splice(cardIndex, 1);
+
+    // delete cardId from lane[...].cards list
+    cardIndex = lanes[laneId].cards.findIndex(card => card.id === cardId);
+    lanes[laneId].cards.splice(cardIndex, 1);
+};
 
 export default {
     getAllCards: () => ( cards.map(card => ( getFlattendCard(card) )) ),

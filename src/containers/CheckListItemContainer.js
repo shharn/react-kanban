@@ -1,22 +1,25 @@
 import { connect } from 'react-redux';
-import { updateCheckListItem, removeCheckListItem } from '../actions/checkListActions';
-import { updateCheckListEditTarget } from '../actions/cardActions';
+import { changeEditableCheckListItemId } from '../actions/ui/editModal';
+import { updateCheckListItem, deleteCheckListItem } from '../actions/domain/checkList';
 import CheckListItem from '../components/CheckListItem';
 
 const mapStateToProps = (state, ownProps) => {
-    let item = state.checkList.filter(item => item.id === ownProps.id)[0];
+    let item = state.domain.checkList.filter(item => item.id === ownProps.id)[0];
+    let isEditMode = state.ui.editModal.currentEditableCheckListItemId === ownProps.id ? true : false;
     return {
-        whoIsEditMode: ownProps.whoIsEditMode,
-        item,
-        cardId: ownProps.cardId
+        isEditMode,
+        item
     }
 };
 
 const mapDispatchToProps = (dispatch) => {
     return {
-        toggleContentEditMode: (cardId, checkListItemId) => dispatch(updateCheckListEditTarget(cardId, checkListItemId)),
-        updateCheckListItem: (checkListId, content, isDone) => dispatch(updateCheckListItem(checkListId, content, isDone)),
-        removeCheckListItem: (checkListId) => dispatch(removeCheckListItem(checkListId))
+        toggleEditMode: (itemId) => dispatch(changeEditableCheckListItemId(itemId)),
+        updateCheckListItem: (item) => {
+            dispatch(updateCheckListItem(item));
+            dispatch(changeEditableCheckListItemId(-1));
+        },
+        deleteCheckListItem: (itemId) => dispatch(deleteCheckListItem(itemId))
     }
 };
 export default connect(mapStateToProps, mapDispatchToProps)(CheckListItem);

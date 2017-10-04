@@ -3,6 +3,14 @@ import { connect } from 'react-redux';
 //import { addCheckListItem } from '../actions/checkListActions';
 
 class AddCheckList extends Component {
+    constructor(props) {
+        super(props);
+    }
+
+    handleDivClick() {
+        
+    }
+
     render() {
         return (
             <div className="modal-item-checklistitem modal-item-addchecklist">

@@ -9,13 +9,18 @@ export default class Card extends Component {
     }
 
     handleClick(clickEvent) {
-        if (clickEvent._targetInst._hostNode.className.indexOf("card") !== -1) {
-            this.props.toggleEditMode(this.props.card.id);
+        if (this.isClickedCard(clickEvent._targetInst)) {
+            this.props.showEditModal(this.props.card.id);
         }
     }
 
+    isClickedCard(targetElement) {
+        return targetElement._hostNode.className.indexOf('card') !== -1;
+    }
+
     handleDeleteButtonClicked() {
-        this.props.deleteCard(this.props.card.id);
+        let { card, laneId } = this.props;
+        this.props.deleteCard(card.id, laneId);
     }
 
     getTimeString(dateObject) {

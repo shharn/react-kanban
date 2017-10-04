@@ -3,15 +3,10 @@ import CheckListItem from '../containers/CheckListItemContainer';
 import AddCheckList from '../containers/AddCheckList';
 
 class CheckList extends Component {
-  constructor(props) {
-    super(props);
-  }
-
   render() {
-    let { cardId, checkListData } = this.props;
-    let checkListItemIds = (typeof checkListData.checkListItemIds === 'undefined') ? [] : checkListData.checkListItemIds;
-    let checkListItemsComponents = checkListItemIds.map(id => {
-      return <CheckListItem key={id} cardId={cardId} id={id} whoIsEditMode={checkListData.whoIsEditMode}/>
+    let { cardId, checkListItems } = this.props;
+    let checkListItemsComponents = checkListItems.map(id => {
+      return <CheckListItem key={id} id={id}/>
     });
     return (
       <div className="modal-item-checklist-wrapper">

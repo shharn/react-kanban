@@ -1,41 +1,43 @@
 import React, { Component } from 'react';
-import CardTitle from '../containers/CardTitleContainer';
+import SmartCardTitle from './SmartCardTitle';
+import SmartCardDescription from './SmartCardDescription';
+import SmartCardDueDate from './SmartCardDueDate';
 import CommentWrapper from './CommentWrapper';
- import CardDescription from '../containers/CardDescriptionContainer';
- import CardDueDate from '../containers/CardDueDateContainer';
 import '../css/EditCardModal.css';
 import keycode from 'keycode';
 
 class EditCardModal extends Component {
   constructor(props) {
     super(props);
-    this.handleSpaceClick = this.handleSpaceClick.bind(this);
+    this.handleEmptySpaceClick = this.handleEmptySpaceClick.bind(this);
     this.handleCloseButtonClick = this.handleCloseButtonClick.bind(this);
   }
 
-  handleSpaceClick(clickEvent) {
-    let targetNodeClassName = clickEvent._targetInst._hostNode.className;
-    let { isTitleEditable, isDescriptionEditable, isDueDateEditable } = this.props.editModeContent;
-    if (targetNodeClassName.indexOf("editCardModalContainer") !== -1) {
-      this.props.toggleCardEditMode(-1);
-     }
+  handleEmptySpaceClick(clickEvent) {
+    if (this.isClickedInThisArea(clickEvent._targetInst, 'editCardModalContainer')) {
+      this.props.disableEditModal();
+    }
+  }
+
+  isClickedInThisArea(targetElement, className) {
+    return targetElement._hostNode.className.indexOf(className) !== -1;
   }
 
   handleCloseButtonClick(clickEvent) {
-    this.props.toggleCardEditMode(-1);
+    this.props.disableEditModal();
   }
 
   render() {
-    let { isEditMode, editModeContent, card } = this.props;
-    let { isTitleEditable, isDescriptionEditable, isDueDateEditable } = editModeContent;
-    let containerClassName = "editCardModalContainer " + (isEditMode ? "show" : "hide");
+    let { uiState, card } = this.props;
+    let { show, isTitleEditMode, isDescriptionEditMode, isDuedateEditMode} = uiState;
+    let containerClassName = "editCardModalContainer " + (show ? "show" : "hide");
     return (
-      <div className={containerClassName} onClick={this.handleSpaceClick} onKeyUp={this.handleKeyUp}>
+      <div className={containerClassName} onClick={this.handleEmptySpaceClick}>
         <button className="modal-close-button" type="button" onClick={this.handleCloseButtonClick}>X</button>
         <div className="modal">
-          <CardTitle  card={card} isTitleEditable={isTitleEditable}/>
-          <CardDescription card={card} isDescriptionEditable={isDescriptionEditable}/>
-          <CardDueDate card={card} isDueDateEditable={isDueDateEditable}/>
+          <SmartCardTitle  card={card} isTitleEditMode={isTitleEditMode} />
+          <SmartCardDescription card={card} isDescriptionEditMode={isDescriptionEditMode}/>
+          <SmartCardDueDate card={card} isDuedateEditMode={isDuedateEditMode}/>
           <CommentWrapper />
         </div>
       </div>

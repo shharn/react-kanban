@@ -1,26 +1,20 @@
 import { connect } from 'react-redux';
 import EditCardModal from '../components/EditCardModal';
-import { toggleCardEditMode, toggleTitleEditMode, toggleDescriptionEditMode, toggleDueDateEditMode } from '../actions/kanbanboardActions';
-import { updateTitle, updateDescription, updateDueDate } from '../actions/cardActions';
+import { changeCardIdForEditModal } from '../actions/ui/editModal';
 
 const mapStateToProps = (state, ownProps) => {
-  let card = state.cards.filter(card => card.id === state.kanbanboard.editModeContent.cardId)[0];
+  let uiState = state.ui.editModal;
+  let targetCardId = uiState.targetCardId;
+  let card = uiState.show ? state.domain.cards.filter(card => card.id === targetCardId)[0] : null;
   return {
-    isEditMode: state.kanbanboard.isEditMode,
-    editModeContent: state.kanbanboard.editModeContent,
+    uiState,
     card
   }
 };
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    toggleCardEditMode: (cardId) => dispatch(toggleCardEditMode(cardId)),
-    toggleTitleEditMode: () => dispatch(toggleTitleEditMode()),
-    toggleDescriptionEditMode: () => dispatch(toggleDescriptionEditMode()),
-    toggleDueDateEditMode: () => dispatch(toggleDueDateEditMode()),
-    updateTitle: (cardId, title) => dispatch(updateTitle(cardId, title)),
-    updateDescription: (cardId, description) => dispatch(updateDescription(cardId, description)),
-    updateDueDate: (cardId, dueDate) => dispatch(updateDueDate(cardId, dueDate))
+    disableEditModal: () => dispatch(changeCardIdForEditModal(-1)),
   };
 }
 
