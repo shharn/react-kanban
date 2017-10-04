@@ -27,7 +27,7 @@ const reducer = (state = cards, action) => {
                 }
                 return {
                     ...card,
-                    checkListItems: card.checkListItems.concat(payload.item.id)
+                    checkListItems: card.checkListItems.concat(payload.itemId)
                 }
             })
         case domainActionTypes.ADD_COMMENT:

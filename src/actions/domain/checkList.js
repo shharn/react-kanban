@@ -1,10 +1,10 @@
 import * as domainActionTypes from '../../types/domainActionTypes';
 
-export const addCheckListItem = (item, cardId) => {
+export const addCheckListItem = (cardId, content) => {
     return {
         type: domainActionTypes.ADD_CHECKLISTITEM,
         payload: {
-            item,
+            content,
             cardId
         }
     }

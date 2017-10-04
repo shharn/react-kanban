@@ -35,3 +35,9 @@ export const changeEditableCheckListItemId = (targetItemId) => {
         }
     }
 }
+
+export const toggleAddCheckListItemEditMode = () => {
+    return {
+        type: uiActionTypes.TOGGLE_ADD_CHECKLISTITEM_EDIT_MODE
+    }
+}

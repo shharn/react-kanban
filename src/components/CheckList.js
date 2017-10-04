@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import CheckListItem from '../containers/CheckListItemContainer';
-import AddCheckList from '../containers/AddCheckList';
+import SmartAddCheckListItem from '../containers/SmartAddCheckListItem';
 
 class CheckList extends Component {
   render() {
@@ -12,7 +12,7 @@ class CheckList extends Component {
       <div className="modal-item-checklist-wrapper">
         <div className="modal-item-checklist-header">+ CheckList</div>
         {checkListItemsComponents}
-        <AddCheckList />
+        <SmartAddCheckListItem cardId={cardId}/>
       </div>
     );
   }
