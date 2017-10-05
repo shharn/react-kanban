@@ -159,17 +159,30 @@ input.modal-item-description {
   text-decoration: line-through;
 }
 
+.modal-item-checklistitem-content-wrapper {
+  display: inline-block;
+  width: 95%;
+  position: relative;
+}
+
 .modal-item-checklistitem-content {
   vertical-align: middle;
   display: inline-block;
   margin-left: .3rem;
+  padding: 0 .2rem;
+  width: 99%;
+  height: 1.1rem;
+  border-radius: .1rem;
 }
 
 input.modal-item-checklistitem-content {
   border-radius: 3px;
   font-size: .9rem;
-  height: .9rem;
+  height: 1rem;
+  width: 93%;
+  padding: .2rem .1rem;
 }
+
 .modal-item-addchecklist {
   color: rgba(0,0,0,0.5);
   margin-left: 12px;
@@ -178,6 +191,30 @@ input.modal-item-checklistitem-content {
   cursor: pointer;
 }
 
-.modal-item-addchecklist:hover {
+.addchecklist-not-editable {
+  margin: .3rem 1rem;
+  padding: .2rem .4rem;
+  cursor: pointer;
+  width: 94%;
+  font-style: italic;
+}
+
+.addchecklist-not-editable:hover {
   background-color: rgba(0,0,0,0.2);
+}
+
+input.addchecklist-editable {
+  width: 96%;
+  height: 1rem;
+  margin: .3rem 1rem;
+}
+
+.checklistitem-delete-button {
+  position: absolute;
+  top: 0;
+  right: 0;
+  margin: .2rem;
+  font-size: .9rem;
+  cursor: pointer;
+  vertical-align: middle;
 }

@@ -3,6 +3,23 @@ import { connect } from 'react-redux';
 import keycode from 'keycode';
 import { toggleTitleEditMode } from '../actions/ui/editModal';
 import { updateCard } from '../actions/domain/card';
+import PropTypes from 'prop-types'
+
+const mapStateToProps = (state, ownProps) => {
+  return {
+    card: ownProps.card
+  }
+}
+
+const mapDispatchToProps = (dispatch) => {
+  return {
+    toggleTitleEditMode: () => dispatch(toggleTitleEditMode()),
+    updateTitle: (card) => {
+      dispatch(updateCard(card));
+      dispatch(toggleTitleEditMode());
+    }
+  }
+}
 
 class EditableCardTitle extends Component {
   constructor(props) {
@@ -39,20 +56,10 @@ class EditableCardTitle extends Component {
   }
 }
 
-const mapStateToProps = (state, ownProps) => {
-  return {
-    card: ownProps.card
-  }
-}
-
-const mapDispatchToProps = (dispatch) => {
-  return {
-    toggleTitleEditMode: () => dispatch(toggleTitleEditMode()),
-    updateTitle: (card) => {
-      dispatch(updateCard(card));
-      dispatch(toggleTitleEditMode());
-    }
-  }
+EditableCardTitle.propTypes = {
+  card: PropTypes.object.isRequired,
+  toggleTitleEditMode: PropTypes.func.isRequired,
+  updatetitle: PropTypes.func.isRequired
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(EditableCardTitle);

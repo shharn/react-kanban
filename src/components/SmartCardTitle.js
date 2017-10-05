@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
-import keycode from 'keycode';
 import EditableCardTitle from '../containers/EditableCardTitle';
 import SimpleCardTitle from '../containers/SimpleCardTitle';
+import PropTypes from 'prop-types'
 
 class SmartCardTitle extends Component {
   render() {
@@ -12,6 +12,11 @@ class SmartCardTitle extends Component {
       </div>
     );
   }
+}
+
+SmartCardTitle.propTypes = {
+  card: PropTypes.object,
+  isTitleEditMode: PropTypes.bool
 }
 
 export default SmartCardTitle;

@@ -13,7 +13,7 @@ export default  [
         "description": "Test Card 2 Description",
         "dueDate": "17-09-12",
         "comments": [],
-        "checkListItemIds": [3]
+        "checkListItems": [3]
     },
     {
         "id": 3,
@@ -21,7 +21,7 @@ export default  [
         "description": "Test Card 3 Description",
         "dueDate": "17-09-22",
         "comments": [],
-        "checkListItemIds": []
+        "checkListItems": []
     },
     {
         "id": 4,
@@ -29,6 +29,6 @@ export default  [
         "description": "Test Card 4 Description",
         "dueDate": "17-07-21",
         "comments": [],
-        "checkListItemIds": []
+        "checkListItems": []
     }
 ]

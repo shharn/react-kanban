@@ -3,6 +3,23 @@ import { connect } from 'react-redux';
 import { changeEditableAddCard } from '../actions/ui/lane';
 import { addCard } from '../actions/domain/card';
 import keycode from 'keycode';
+import PropTypes from 'prop-types'
+
+const mapStateToProps = (state, ownProps) => {
+  return {
+    laneId: ownProps.laneId
+  }
+}
+
+const mapDispatchToProps = (dispatch) => {
+  return {
+    addCard: (title, laneId) => {
+      dispatch(addCard(title, laneId));
+      dispatch(changeEditableAddCard(null));
+    },
+    disableEditMode: () => dispatch(changeEditableAddCard(null))
+  }
+}
 
 class EditableAddCard extends Component {
   constructor(props) {
@@ -42,20 +59,10 @@ class EditableAddCard extends Component {
   }
 }
 
-const mapStateToProps = (state, ownProps) => {
-  return {
-    laneId: ownProps.laneId
-  }
-}
-
-const mapDispatchToProps = (dispatch) => {
-  return {
-    addCard: (title, laneId) => {
-      dispatch(addCard(title, laneId));
-      dispatch(changeEditableAddCard(null));
-    },
-    disableEditMode: () => dispatch(changeEditableAddCard(null))
-  }
+EditableAddCard.propTypes = {
+  laneId: PropTypes.string.isRequired,
+  addCard: PropTypes.func.isRequired,
+  disableEditMode: PropTypes.func.isRequired
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(EditableAddCard)

@@ -1,7 +1,8 @@
 import React, { Component } from 'react'
+import PropTypes from 'prop-types'
 import '../css/Card.css';
 
-export default class Card extends Component {
+  class Card extends Component {
     constructor(props) {
         super(props);
         this.handleClick = this.handleClick.bind(this);
@@ -37,7 +38,7 @@ export default class Card extends Component {
         let card = this.props.card;
         return (
             <div id={card.id} className="card" key={card.id} onClick={this.handleClick}>
-                <button type="button" className="delete-button" onClick={this.handleDeleteButtonClicked}>X</button>
+                <button type="button" className="card-delete-button" onClick={this.handleDeleteButtonClicked}>X</button>
                 <div className="card-title">
                     {card.title}
                 </div>
@@ -48,3 +49,12 @@ export default class Card extends Component {
         )
     }
 }
+
+Card.propTypes = {
+    card: PropTypes.object.isRequired,
+    laneId: PropTypes.string.isRequired,
+    showEditModal: PropTypes.func.isRequired,
+    deleteCard: PropTypes.func.isRequired
+}
+
+export default Card;

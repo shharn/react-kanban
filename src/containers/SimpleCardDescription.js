@@ -1,6 +1,19 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux';
 import { toggleDescriptionEditMode } from '../actions/ui/editModal';
+import PropTypes from 'prop-types'
+
+const mapStateToProps = (state, ownProps) => {
+  return {
+    card: ownProps.card
+  }
+}
+
+const mapDispatchToProps = (dispatch) => {
+  return {
+    toggleDescriptionEditMode: () => dispatch(toggleDescriptionEditMode())
+  }
+}
 
 class SimpleCardDescription extends Component {
   constructor(props) {
@@ -22,16 +35,9 @@ class SimpleCardDescription extends Component {
   }
 }
 
-const mapStateToProps = (state, ownProps) => {
-  return {
-    card: ownProps.card
-  }
-}
-
-const mapDispatchToProps = (dispatch) => {
-  return {
-    toggleDescriptionEditMode: () => dispatch(toggleDescriptionEditMode())
-  }
+SimpleCardDescription.propTypes = {
+  card: PropTypes.object,
+  toggleDescriptionEditMode: PropTypes.func.isRequired
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(SimpleCardDescription);

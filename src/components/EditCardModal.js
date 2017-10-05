@@ -3,8 +3,8 @@ import SmartCardTitle from './SmartCardTitle';
 import SmartCardDescription from './SmartCardDescription';
 import SmartCardDueDate from './SmartCardDueDate';
 import CommentWrapper from './CommentWrapper';
+import PropTypes from 'prop-types'
 import '../css/EditCardModal.css';
-import keycode from 'keycode';
 
 class EditCardModal extends Component {
   constructor(props) {
@@ -43,6 +43,12 @@ class EditCardModal extends Component {
       </div>
     );
   }
+}
+
+EditCardModal.propTypes = {
+  uiState: PropTypes.object.isRequired,
+  card: PropTypes.object,
+  disableEditModal: PropTypes.func.isRequired
 }
 
 export default EditCardModal;

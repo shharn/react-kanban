@@ -3,6 +3,23 @@ import { connect} from 'react-redux';
 import keycode from 'keycode';
 import { toggleDuedateEditMode } from '../actions/ui/editModal';
 import { updateCard } from '../actions/domain/card';
+import PropTypes from 'prop-types'
+
+const mapStateToProps = (state, ownProps) => {
+  return {
+    card: ownProps.card
+  }
+}
+
+const mapDispatchToProps = (dispatch) => {
+  return {
+    toggleDuedateEditMode: () => dispatch(toggleDuedateEditMode()),
+    updateDuedate: (card) => {
+      dispatch(updateCard(card));
+      dispatch(toggleDuedateEditMode())
+    }
+  }
+}
 
 class EditableCardDuedate extends Component {
   constructor(props) {
@@ -38,20 +55,10 @@ class EditableCardDuedate extends Component {
   }
 }
 
-const mapStateToProps = (state, ownProps) => {
-  return {
-    card: ownProps.card
-  }
-}
-
-const mapDispatchToProps = (dispatch) => {
-  return {
-    toggleDuedateEditMode: () => dispatch(toggleDuedateEditMode()),
-    updateDuedate: (card) => {
-      dispatch(updateCard(card));
-      dispatch(toggleDuedateEditMode())
-    }
-  }
+EditableCardDuedate.propTypes = {
+  card: PropTypes.object.isRequired,
+  toggleDuedateEditMode: PropTypes.object.isRequired,
+  updateDuedate: PropTypes.object.isRequired
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(EditableCardDuedate);

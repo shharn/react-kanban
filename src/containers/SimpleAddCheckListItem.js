@@ -1,6 +1,13 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { toggleAddCheckListItemEditMode } from '../actions/ui/editModal';
+import PropTypes from 'prop-types'
+
+const mapDispatchToProps = (dispatch) => {
+  return {
+    enableEditMode: () => dispatch(toggleAddCheckListItemEditMode())
+  }
+}
 
 class SimpleAddCheckListItem extends Component {
   constructor(props) {
@@ -15,15 +22,13 @@ class SimpleAddCheckListItem extends Component {
 
   render() {
     return (
-      <div onClick={this.handleDivClick}>Add Item</div>
+      <div className="addchecklist-not-editable" onClick={this.handleDivClick}>Add Item</div>
     )
   }
 }
 
-const mapDispatchToProps = (dispatch) => {
-  return {
-    enableEditMode: () => dispatch(toggleAddCheckListItemEditMode())
-  }
+SimpleAddCheckListItem.propTypes = {
+  enableEditMode: PropTypes.func.isRequired
 }
 
 export default connect(undefined, mapDispatchToProps)(SimpleAddCheckListItem)

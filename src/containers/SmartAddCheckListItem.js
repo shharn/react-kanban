@@ -2,17 +2,7 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux';
 import SimpleAddCheckListItem from './SimpleAddCheckListItem';
 import EditableAddCheckListItem from './EditableAddCheckListItem';
-
-class SmartAddCheckList extends Component {
-    render() {
-        let { cardId } = this.props;
-        return (
-            <div className="modal-item-checklistitem modal-item-addchecklist">
-                {this.props.isEditMode ? <EditableAddCheckListItem cardId={cardId}/> : <SimpleAddCheckListItem />}
-            </div>
-        )
-    }
-}
+import PropTypes from 'prop-types'
 
 const mapStateToProps = (state, ownProps) => {
     return {
@@ -20,5 +10,21 @@ const mapStateToProps = (state, ownProps) => {
         cardId: ownProps.cardId
     }
 }
-    
+
+class SmartAddCheckList extends Component {
+    render() {
+        let { cardId } = this.props;
+        return (
+            <div className="modal-item-checklistitem">
+                {this.props.isEditMode ? <EditableAddCheckListItem cardId={cardId}/> : <SimpleAddCheckListItem />}
+            </div>
+        )
+    }
+}
+   
+SmartAddCheckList.propTypes = {
+    isEditMode: PropTypes.bool.isRequired,
+    cardId: PropTypes.number.isRequired
+}
+
 export default connect(mapStateToProps)(SmartAddCheckList);

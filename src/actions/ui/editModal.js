@@ -41,3 +41,12 @@ export const toggleAddCheckListItemEditMode = () => {
         type: uiActionTypes.TOGGLE_ADD_CHECKLISTITEM_EDIT_MODE
     }
 }
+
+export const changeItemIdForDeleteButton = (itemId) => {
+    return {
+        type: uiActionTypes.CHANGE_ITEMID_FOR_DELETE_BUTTON,
+        payload: {
+            itemId
+        }
+    }
+}

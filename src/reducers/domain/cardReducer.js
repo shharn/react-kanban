@@ -30,6 +30,16 @@ const reducer = (state = cards, action) => {
                     checkListItems: card.checkListItems.concat(payload.itemId)
                 }
             })
+        case domainActionTypes.DELETE_CHECKLISTITEM:
+            return state.map(card => {
+                if (card.id !== payload.cardId) {
+                    return card;
+                }
+                return {
+                    ...card,
+                    checkListItems: card.checkListItems.filter(itemId => itemId !== payload.itemId)
+                }
+            })
         case domainActionTypes.ADD_COMMENT:
             return state.map(card => {
                 if (card.id !== payload.cardId) {

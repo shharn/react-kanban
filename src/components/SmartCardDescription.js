@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
-import keycode from 'keycode';
 import CheckList from './CheckList';
 import SimpleCardDescription from '../containers/SimpleCardDescription';
 import EditableCardDescription from '../containers/EditableCardDescription';
+import PropTypes from 'prop-types'
 
 class SmartCardDescription extends Component {
   render() {
@@ -17,6 +17,11 @@ class SmartCardDescription extends Component {
       </div>
     );
   }
+}
+
+SmartCardDescription.propTypes = {
+  card: PropTypes.object,
+  isDescriptionEditMode: PropTypes.bool
 }
 
 export default SmartCardDescription;

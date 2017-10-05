@@ -28,7 +28,8 @@ const reducer = (state = editModalUiState, action) => {
                 isDuedateEditMode: false,
                 isCheckListItemEditMode: false,
                 currentEditableCheckListItemId: -1,
-                isAddCheckListItemEditable: false
+                isAddCheckListItemEditable: false,
+                itemIdThatHasDeleteButton: -1
             }
         case uiActionTypes.CHANGE_EDITABLE_CHECKLISTITEM_ID:
             return {
@@ -41,6 +42,11 @@ const reducer = (state = editModalUiState, action) => {
                 ...state,
                 isAddCheckListItemEditable: !state.isAddCheckListItemEditable
             };
+        case uiActionTypes.CHANGE_ITEMID_FOR_DELETE_BUTTON:
+            return {
+                ...state,
+                itemIdThatHasDeleteButton: payload.itemId
+            }
         default:
             return state;
     }

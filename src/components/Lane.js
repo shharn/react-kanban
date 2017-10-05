@@ -3,15 +3,16 @@ import '../css/Lane.css';
 import AddCard from '../containers/AddCard';
 import Card from '../containers/CardContainer';
 import EditableAddCard from '../containers/EditableAddCard';
+import PropTypes from 'prop-types'
 
-export default class Lane extends Component {
+class Lane extends Component {
     constructor(props) {
         super(props);
         this.handleClickOnEmptySpace = this.handleClickOnEmptySpace.bind(this);
     }
 
     handleClickOnEmptySpace(clickEvent) {
-        let { laneId, isEditing, title } = this.props;
+        let { laneId, isEditing } = this.props;
         if (isEditing && this.isOutsideOfCard(clickEvent._targetInst)) {
             this.props.toggleAddCard(laneId, isEditing);
         }
@@ -34,3 +35,14 @@ export default class Lane extends Component {
         );
     }
 }
+
+Lane.propTypes = {
+    cards: PropTypes.arrayOf(
+        PropTypes.object
+    ).isRequired,
+    laneId: PropTypes.string.isRequired,
+    title: PropTypes.string.isRequired,
+    isEditableAddCard: PropTypes.bool.isRequired
+}
+
+export default Lane;

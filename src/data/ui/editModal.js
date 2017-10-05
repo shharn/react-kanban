@@ -6,5 +6,6 @@ export default {
   isDuedateEditMode: false,
   isCheckListItemEditable: false,
   currentEditableCheckListItemId: -1,
-  isAddCheckListItemEditable: false
+  isAddCheckListItemEditable: false,
+  itemIdThatHasDeleteButton: -1
 }
