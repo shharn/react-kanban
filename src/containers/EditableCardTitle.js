@@ -47,11 +47,13 @@ class EditableCardTitle extends Component {
     let { card } = this.props;
     console.log(card.title);
     return (
-      <input className="modal-item-title"
+      <textarea className="modal-item-title"
         type="text" 
         ref={(input) => this.textInput = input} 
         onKeyUp={this.handleKeyUp} 
-        defaultValue={card ? card.title : ""} />
+        defaultValue={card ? card.title : ""}
+        wrap="hard"
+        cols="10" />
     )
   }
 }
@@ -59,7 +61,7 @@ class EditableCardTitle extends Component {
 EditableCardTitle.propTypes = {
   card: PropTypes.object.isRequired,
   toggleTitleEditMode: PropTypes.func.isRequired,
-  updatetitle: PropTypes.func.isRequired
+  updateTitle: PropTypes.func.isRequired
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(EditableCardTitle);

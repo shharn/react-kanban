@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import SmartCardTitle from './SmartCardTitle';
 import SmartCardDescription from './SmartCardDescription';
 import SmartCardDueDate from './SmartCardDueDate';
-import CommentWrapper from './CommentWrapper';
 import PropTypes from 'prop-types'
 import '../css/EditCardModal.css';
 
@@ -38,7 +37,6 @@ class EditCardModal extends Component {
           <SmartCardTitle  card={card} isTitleEditMode={isTitleEditMode} />
           <SmartCardDescription card={card} isDescriptionEditMode={isDescriptionEditMode}/>
           <SmartCardDueDate card={card} isDuedateEditMode={isDuedateEditMode}/>
-          <CommentWrapper />
         </div>
       </div>
     );
