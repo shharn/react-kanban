@@ -33,7 +33,7 @@ class EditableAddCard extends Component {
         let card = {
           title: this.textInput.value,
           description: "",
-          dueDate: "",
+          dueDate: -1,
           comments: [],
           checkListItems: [],
         };

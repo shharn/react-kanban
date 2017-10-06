@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux';
 import { toggleDuedateEditMode } from '../actions/ui/editModal';
 import PropTypes from 'prop-types'
+import moment from 'moment';
 
 const mapStateToProps = (state, ownProps) => {
   return {
@@ -27,9 +28,10 @@ class SimpleCardDuedate extends Component {
 
   render() {
     let { card } = this.props;
+    let formattedDate = (card && card.dueDate !== -1) ? moment(card.dueDate).format(' YY / MM / DD') : 'No DueDate';
     return (
       <div className="modal-item-duedate" onClick={this.handleDivClick}>
-        {(card && card.dueDate.length > 0) ? card.dueDate : "No Duedate"}
+        {formattedDate}
       </div>
     )
   }

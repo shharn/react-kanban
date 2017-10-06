@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import '../css/Card.css';
+import moment from 'moment';
 
   class Card extends Component {
     constructor(props) {
@@ -36,6 +37,7 @@ import '../css/Card.css';
 
     render() {
         let card = this.props.card;
+        let formattedDate = card.dueDate === -1 ? "" : moment(card.dueDate).format(' YY / MM / DD');
         return (
             <div id={card.id} className="card" key={card.id} onClick={this.handleClick}>
                 <button type="button" className="card-delete-button" onClick={this.handleDeleteButtonClicked}>X</button>
@@ -43,7 +45,7 @@ import '../css/Card.css';
                     {card.title}
                 </div>
                 <div className="card-duedate">
-                    {card.dueDate === undefined ? "" : card.dueDate}
+                    {formattedDate}
                 </div>
             </div>
         )
