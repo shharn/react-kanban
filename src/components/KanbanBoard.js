@@ -2,8 +2,10 @@ import React, { Component } from 'react';
 import Lane from '../containers/LaneContainer';
 import '../css/KanbanBoard.css';
 import EditCardModal from '../containers/EditCardModalContainer';
+import { DragDropContext } from 'react-dnd';
+import HTML5Backend from 'react-dnd-html5-backend';
 
-export default class KanbanBoard extends Component {
+class KanbanBoard extends Component {
     render() {
         return (
             <div className="appContainer">
@@ -18,3 +20,5 @@ export default class KanbanBoard extends Component {
         )
     }
 }
+
+export default DragDropContext(HTML5Backend)(KanbanBoard);

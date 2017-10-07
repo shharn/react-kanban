@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 import '../css/Card.css';
 import moment from 'moment';
 
-  class Card extends Component {
+class Card extends Component {
     constructor(props) {
         super(props);
         this.handleClick = this.handleClick.bind(this);
@@ -36,19 +36,20 @@ import moment from 'moment';
     }
 
     render() {
-        let card = this.props.card;
+        console.log(this.props);
+        let { card, isDragging, connectDragSource } = this.props;
         let formattedDate = card.dueDate === -1 ? "" : moment(card.dueDate).format(' YY / MM / DD');
-        return (
-            <div id={card.id} className="card" key={card.id} onClick={this.handleClick}>
-                <button type="button" className="card-delete-button" onClick={this.handleDeleteButtonClicked}>X</button>
-                <div className="card-title">
-                    {card.title}
+        return connectDragSource(
+                <div id={card.id} className="card" key={card.id} onClick={this.handleClick} style={{ opacity: isDragging ? 0.5 : 1 }}>
+                    <button type="button" className="card-delete-button" onClick={this.handleDeleteButtonClicked}>X</button>
+                    <div className="card-title">
+                        {card.title}
+                    </div>
+                    <div className="card-duedate">
+                        {formattedDate}
+                    </div>
                 </div>
-                <div className="card-duedate">
-                    {formattedDate}
-                </div>
-            </div>
-        )
+            );
     }
 }
 
@@ -56,7 +57,9 @@ Card.propTypes = {
     card: PropTypes.object.isRequired,
     laneId: PropTypes.string.isRequired,
     showEditModal: PropTypes.func.isRequired,
-    deleteCard: PropTypes.func.isRequired
+    deleteCard: PropTypes.func.isRequired,
+    connectDragSource: PropTypes.func.isRequired,
+    isDragging: PropTypes.bool.isRequired
 }
 
 export default Card;
