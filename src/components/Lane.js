@@ -5,6 +5,7 @@ import Card from '../containers/CardContainer';
 import EditableAddCard from '../containers/EditableAddCard';
 import PropTypes from 'prop-types'
 
+
 class Lane extends Component {
     constructor(props) {
         super(props);
@@ -23,16 +24,16 @@ class Lane extends Component {
     }
 
     render() {
-        let { laneId, title, cards, isEditableAddCard } = this.props;
+        let { laneId, title, cards, isEditableAddCard, connectDropTarget, isDrop } = this.props;
         let cardComponents = cards.map(card => ( <Card card={card} key={card.id} laneId={laneId}/> ));
-        return (
-            <li className="lane" key={laneId} id={laneId} onClick={this.handleClickOnEmptySpace}>
-                <div className="title">{title}</div>
-                {cardComponents}
-                {isEditableAddCard ?
-                <EditableAddCard laneId={laneId}/> : <AddCard laneId={laneId}/>}
-            </li>
-        );
+        return connectDropTarget(
+                <li className="lane" key={laneId} id={laneId} onClick={this.handleClickOnEmptySpace}>
+                    <div className="title">{title}</div>
+                    {cardComponents}
+                    {isEditableAddCard ?
+                    <EditableAddCard laneId={laneId}/> : <AddCard laneId={laneId}/>}
+                </li>
+            );
     }
 }
 
@@ -42,7 +43,9 @@ Lane.propTypes = {
     ).isRequired,
     laneId: PropTypes.string.isRequired,
     title: PropTypes.string.isRequired,
-    isEditableAddCard: PropTypes.bool.isRequired
+    isEditableAddCard: PropTypes.bool.isRequired,
+    connectDropTarget: PropTypes.func.isRequired,
+    isOver: PropTypes.bool.isRequired
 }
 
 export default Lane;

@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
-import '../css/Card.css';
 import moment from 'moment';
+import '../css/Card.css';
 
 class Card extends Component {
     constructor(props) {
@@ -36,7 +36,6 @@ class Card extends Component {
     }
 
     render() {
-        console.log(this.props);
         let { card, isDragging, connectDragSource } = this.props;
         let formattedDate = card.dueDate === -1 ? "" : moment(card.dueDate).format(' YY / MM / DD');
         return connectDragSource(

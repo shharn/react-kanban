@@ -28,3 +28,4 @@ export const deleteCard = (id, laneId) => {
         }
     }
 }
+

@@ -21,15 +21,19 @@ const mapDispatchToProps = (dispatch) => {
 
 const cardSource = {
   beginDrag(props) {
-      return {};
+      return { 
+        cardId: props.card.id,
+        fromLaneId: props.laneId
+      };
   }
 }
 
-function collect(connect, monitor) {
+const collect = (connect, monitor)  => {
   return {
       connectDragSource: connect.dragSource(),
       isDragging: monitor.isDragging()
   }
 }
 
-export default DragSource(ItemTypes.DND_CARD, cardSource, collect)(connect(mapStateToProps, mapDispatchToProps)(Card));
+const draggableCard = DragSource(ItemTypes.DND_CARD, cardSource, collect)(Card);
+export default connect(mapStateToProps, mapDispatchToProps)(draggableCard);

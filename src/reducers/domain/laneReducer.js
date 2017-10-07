@@ -18,6 +18,16 @@ let reducer = (state = lanes, action) => {
           cards: state[payload.laneId].cards.filter(cardId => cardId !== payload.id)
         }
       }
+    case domainActionTypes.MOVE_CARD:
+      return {
+        ...state,
+        [payload.from]: {
+          cards: state[payload.from].cards.filter(cardId => cardId !== payload.cardId)
+        },
+        [payload.to]: {
+          cards: state[payload.to].cards.concat(payload.cardId)
+        }
+      }
     default: 
       return state;
   }
