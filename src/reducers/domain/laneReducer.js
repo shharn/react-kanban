@@ -19,13 +19,36 @@ let reducer = (state = lanes, action) => {
         }
       }
     case domainActionTypes.MOVE_CARD:
-      return {
-        ...state,
-        [payload.from]: {
-          cards: state[payload.from].cards.filter(cardId => cardId !== payload.cardId)
-        },
-        [payload.to]: {
-          cards: state[payload.to].cards.concat(payload.cardId)
+      let { sourceCardId, sourceLaneId, targetCardId, targetLaneId } = payload;
+      let targetPos = state[targetLaneId].cards.findIndex(cardId => cardId === targetCardId);
+      if (sourceLaneId === targetLaneId) {
+        let cards = state[targetLaneId].cards.filter(cardId => cardId !== sourceCardId);
+        if (targetCardId === -1) {
+          cards.push(sourceCardId);
+        } else {
+          cards.splice(targetPos, 0, sourceCardId);
+        }
+        return {
+          ...state,
+          [targetLaneId]: {
+            cards
+          }
+        }
+      } else {
+        let addedLaneCards = state[targetLaneId].cards.slice();
+        if (targetCardId !== -1) { // 리스트의 마지막에 push 되는 경우인가? (in AddCard Component)
+          addedLaneCards.splice(targetPos, 0, sourceCardId);
+        } else {
+          addedLaneCards.push(sourceCardId);
+        }
+        return {
+          ...state,
+          [sourceLaneId]: {
+            cards: state[sourceLaneId].cards.filter(cardId => cardId !== sourceCardId)
+          },
+          [targetLaneId]: {
+            cards: addedLaneCards
+          }
         }
       }
     default: 

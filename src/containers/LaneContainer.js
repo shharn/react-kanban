@@ -7,7 +7,10 @@ import { moveCard } from '../actions/domain/lane';
 const mapStateToProps = (state, ownProps) => {
     let { laneId, title } = ownProps;
     let cardIds = state.domain.lanes[laneId].cards;
-    let cards =  state.domain.cards.filter((card) => cardIds.includes(card.id));
+    let cards = cardIds.map(id => {
+        let pos = state.domain.cards.findIndex(card => card.id === id);
+        return state.domain.cards.slice(pos, pos+1)[0];
+    });
     return {
         cards,
         laneId,
@@ -18,8 +21,13 @@ const mapStateToProps = (state, ownProps) => {
 
 const laneTarget = {
         drop(props, monitor) {
+            console.log('laneTarget drop event handler');
             let item = monitor.getItem();
-            props.dispatch(moveCard(item.cardId, item.fromLaneId, props.laneId));
+            let cardPos = monitor.getClientOffset(); // point of mouse clicked
+            if (!monitor.didDrop()) {
+                // determine position of sourceCard according to the 'cardPos'
+                props.dispatch(moveCard(item.cardId, -1, item.fromLaneId, props.laneId));
+            }
         }
 }
 

@@ -24,7 +24,7 @@ class Lane extends Component {
     }
 
     render() {
-        let { laneId, title, cards, isEditableAddCard, connectDropTarget, isDrop } = this.props;
+        let { laneId, title, cards, isEditableAddCard, connectDropTarget } = this.props;
         let cardComponents = cards.map(card => ( <Card card={card} key={card.id} laneId={laneId}/> ));
         return connectDropTarget(
                 <li className="lane" key={laneId} id={laneId} onClick={this.handleClickOnEmptySpace}>

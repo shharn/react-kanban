@@ -36,9 +36,11 @@ class Card extends Component {
     }
 
     render() {
-        let { card, isDragging, connectDragSource } = this.props;
+        let { card, isDragging, connectDragSource, isOver, connectDropTarget, sourceItem } = this.props;
         let formattedDate = card.dueDate === -1 ? "" : moment(card.dueDate).format(' YY / MM / DD');
-        return connectDragSource(
+        let jsx = isOver && card.id !== sourceItem.cardId? 
+            <div>
+                <div className="card" style={{opacity: 0.5}}>Here!</div>
                 <div id={card.id} className="card" key={card.id} onClick={this.handleClick} style={{ opacity: isDragging ? 0.5 : 1 }}>
                     <button type="button" className="card-delete-button" onClick={this.handleDeleteButtonClicked}>X</button>
                     <div className="card-title">
@@ -48,7 +50,17 @@ class Card extends Component {
                         {formattedDate}
                     </div>
                 </div>
-            );
+            </div> :
+            <div id={card.id} className="card" key={card.id} onClick={this.handleClick} style={{ opacity: isDragging ? 0.5 : 1 }}>
+                <button type="button" className="card-delete-button" onClick={this.handleDeleteButtonClicked}>X</button>
+                <div className="card-title">
+                    {card.title}
+                </div>
+                <div className="card-duedate">
+                    {formattedDate}
+                </div>
+            </div>;
+        return connectDropTarget(connectDragSource(jsx));
     }
 }
 

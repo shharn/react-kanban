@@ -1,12 +1,13 @@
 import * as domainActionTypes from '../../types/domainActionTypes';
 
-export const moveCard = (cardId, from, to) => {
+export const moveCard = (sourceCardId, targetCardId, sourceLaneId, targetLaneId) => {
   return {
       type: domainActionTypes.MOVE_CARD,
       payload: {
-          cardId,
-          from,
-          to
+          sourceCardId,
+          targetCardId,
+          sourceLaneId,
+          targetLaneId
       }
   }
 }
